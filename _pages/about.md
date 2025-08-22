@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: [Assistant Professor of Social Work](https://search.asu.edu/profile/4157923)
+subtitle: <a href='https://search.asu.edu/profile/4157923'>Assistant Professor of Social Work
 # subtitle: <a href='#'>Assistant Professor of Social Work</a>
 
 profile:
