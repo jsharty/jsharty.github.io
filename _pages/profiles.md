@@ -11,7 +11,7 @@ profiles:
   # and create one content file for each profile inside _pages/
   - align: right
     image: prof_pic.jpg
-    content: about_Harty.md
+    content: about_harty.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>University Center</p>
@@ -19,7 +19,7 @@ profiles:
       <p>Phoenix, AZ 85004</p>
   - align: left
     image: prof_pic.jpg
-    content: about_Harty.md
+    content: about_harty.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>University Center</p>
