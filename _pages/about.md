@@ -8,7 +8,7 @@ subtitle: <a href='https://search.asu.edu/profile/4157923'>Assistant Professor o
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: true # crops the image to make it circular
+  image_circular: false # crops the image to make it circular
   more_info: |
     <p>Arizona State University</p>
     <p>Watts College</p>
