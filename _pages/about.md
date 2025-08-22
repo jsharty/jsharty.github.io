@@ -2,13 +2,13 @@
 layout: about
 title: about
 permalink: /
-subtitle: Assistant Professor of Social Work
+subtitle: [Assistant Professor of Social Work](https://search.asu.edu/profile/4157923)
 # subtitle: <a href='#'>Assistant Professor of Social Work</a>
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: |
     <p>Arizona State University</p>
     <p>Watts College</p>
@@ -28,7 +28,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Dr. Justin S. Harty is an [Assistant Professor in the School of Social Work at Arizona State University](https://search.asu.edu/profile/4157923), specializing in child welfare, fatherhood, and social work history. He holds a Ph.D. from the University of Chicago's Crown Family School of Social Work, Policy, and Practice, an MSW with a focus on children and families from the University of Illinois at Chicago, and bachelor's degrees in sociology and philosophy from the University of Illinois at Urbana-Champaign. Dr. Harty is a Licensed Clinical Social Worker whose research and practice address critical issues faced by young fathers transitioning out of foster care, father involvement within child welfare systems, and the historical development of father-focused social services.
+Dr. Justin S. Harty is an Assistant Professor in the School of Social Work at Arizona State University, specializing in child welfare, fatherhood, and social work history. He holds a Ph.D. from the University of Chicago's Crown Family School of Social Work, Policy, and Practice, an MSW with a focus on children and families from the University of Illinois at Chicago, and bachelor's degrees in sociology and philosophy from the University of Illinois at Urbana-Champaign. Dr. Harty is a Licensed Clinical Social Worker whose research and practice address critical issues faced by young fathers transitioning out of foster care, father involvement within child welfare systems, and the historical development of father-focused social services.
 
 Dr. Harty’s research interests include the outcomes and preparedness of young fathers aging out of the foster care system, father engagement in child welfare services, and father-related social services in the history of the social work profession. His current research examines ways to better serve fathers in home visiting, child welfare and foster care settings. His dissertation focused on the experiences and needs of young Black fathers in foster care as they leave state care and transition to independent adulthood and early fatherhood.
 
