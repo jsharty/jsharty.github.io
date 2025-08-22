@@ -6,10 +6,10 @@ subtitle: Assistant Professor of Social Work
 # subtitle: <a href='#'>Assistant Professor of Social Work</a>
 
 profile:
-align: right
-image: prof_pic.jpg
+  align: right
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-more_info: >
+  more_info: |
     <p>Arizona State University</p>
     <p>Watts College</p>
     <p>School of Social Work</p>
@@ -18,14 +18,14 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
-enabled: true # includes a list of news items
-scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-enabled: true
-scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-limit: 3 # leave blank to include all the blog posts
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
 ---
 
 Dr. Justin S. Harty is an [Assistant Professor in the School of Social Work at Arizona State University](https://search.asu.edu/profile/4157923), specializing in child welfare, fatherhood, and social work history. He holds a Ph.D. from the University of Chicago's Crown Family School of Social Work, Policy, and Practice, an MSW with a focus on children and families from the University of Illinois at Chicago, and bachelor's degrees in sociology and philosophy from the University of Illinois at Urbana-Champaign. Dr. Harty is a Licensed Clinical Social Worker whose research and practice address critical issues faced by young fathers transitioning out of foster care, father involvement within child welfare systems, and the historical development of father-focused social services.
