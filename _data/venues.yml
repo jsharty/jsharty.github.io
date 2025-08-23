@@ -1,9 +1,13 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"Child Welfare":
+  color: "#B2BEB5"
 
-"PhysRev":
-  url: https://journals.aps.org/
+"Fatherhood":
+  color: "#7393B3"
 
-"Vision":
-  color: "#009f36"
+"Historical":
+  color: "#848884"
+
+"Antiracism":
+  color: "#C0C0C0"
+
+#https://htmlcolorcodes.com/colors/shades-of-gray/
