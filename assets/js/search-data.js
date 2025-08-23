@@ -515,14 +515,14 @@ ninja.data = [{
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=uPm7xaoAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user=uXKeZIMAAAAJ", "_blank");
         },
       },{
-        id: 'social-custom_social',
-        title: 'Custom_social',
+        id: 'social-x',
+        title: 'X',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.alberteinstein.com/", "_blank");
+          window.open("https://twitter.com/JustinSHarty", "_blank");
         },
       },{
       id: 'light-theme',
