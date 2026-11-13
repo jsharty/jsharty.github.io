@@ -1,0 +1,16 @@
+{%- comment -%} Compact list of the most recent items. include.items = sorted array, include.n = count {%- endcomment -%}
+{%- assign months = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," -%}
+<ol class="items recent">
+{%- for it in include.items limit: include.n -%}
+  <li class="item">
+    <div class="item-date">{{ it.year }}{% if include.talk and it.month != '' %}<span>{{ it.month }} {{ it.day }}</span>{% endif %}</div>
+    <div class="item-body">
+      <p class="item-kind">{{ it.section }}</p>
+      <p class="cite">{{ it.citation }}</p>
+      {%- if it.url != '' -%}
+      <p class="recent-link"><a href="{{ it.url }}" aria-label="{% if include.talk %}Program{% else %}Read{% endif %}: {{ it.title | escape }}">{% if include.talk %}Program{% else %}Read it{% endif %} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
+      {%- endif -%}
+    </div>
+  </li>
+{%- endfor -%}
+</ol>

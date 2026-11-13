@@ -1,0 +1,3 @@
+# How many items the home page shows in its "recent" lists.
+recent_publications: 5
+recent_talks: 5

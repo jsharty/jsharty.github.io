@@ -60,3 +60,7 @@ When you're ready to retire the Wix site, at your domain registrar (or in Wix's 
 3. Remove the old Wix A/CNAME records.
 4. In this repo: uncomment the `cname: justinharty.com` line in `.github/workflows/deploy.yml`, and set `url: https://justinharty.com` in `_config.yml`. Commit.
 5. In GitHub, Settings, Pages: confirm the custom domain and tick **Enforce HTTPS** once the certificate is issued.
+
+## Home page: featured research and recent lists
+- **Featured research:** edit `_data/featured.yml`. List citekeys (or a distinctive piece of a title) in the order you want them shown.
+- **Recent publications / recent talks:** these update automatically from the .bib file (newest first). Change how many show in `_data/home.yml`.
