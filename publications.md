@@ -6,5 +6,5 @@ dimensions: true
 ---
 # Publications
 
-{% include filters.html what="publications" %}
+{% include filters.html what="publications" sort=true venue_label="Journal or book" %}
 {% include bib_sections.html page="publications" kind="pub" %}

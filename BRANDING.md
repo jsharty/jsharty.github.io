@@ -2,7 +2,7 @@
 
 Theme: [Minimal Light](https://github.com/yaoyao-liu/minimal-light) by Yaoyao Liu (CC0; credited in the footer),
 restyled to Arizona State University brand and web standards. All colors are SCSS variables at the top of
-`_sass/minimal-light.scss`; no hex values appear anywhere else.
+`_sass/minimal-light.scss` (three dark-theme grays sit beside them); no hex values appear anywhere else.
 
 ## Colors
 
@@ -63,14 +63,32 @@ Headings bold and sentence case; navigation title case; no ampersands in menus o
 |---|---|
 | Header logo (white ground), links to socialwork.asu.edu | `assets/img/asu-socialwork-horiz.png` (web-size copy of `ASU_SocialWork_1_Horiz_RGB_MaroonGold_600ppi.png`) |
 | Original, full resolution | `assets/img/ASU_SocialWork_1_Horiz_RGB_MaroonGold_600ppi.png` |
-| White version, for maroon/dark grounds only (not currently used) | `assets/img/ASU_SocialWork_2_Horiz_RGB_White_600ppi.png` |
+| White version, full resolution | `assets/img/ASU_SocialWork_2_Horiz_RGB_White_600ppi.png` |
+| Header logo in Dark theme | `assets/img/asu-socialwork-horiz-white.png` (web-size copy of the white version) |
 | Favicon (light) | `assets/img/ASU_SunBurst_1_RGB_MaroonGold_150ppi.png` |
 | Favicon (dark browser UI) | `assets/img/ASU_SunBurst_2_RGB_White_150ppi.png` |
 
 Logos are not recolored, stretched, cropped, or given effects. Source: `0_FileSystem/OLD SYSTEM/_Inbox/ASU/ASUFiles/Logos`.
 
-## Dark mode
-Disabled. ASU web standards define no dark theme.
+## Color theme: Light, Dark, or System
+A three-way switch in the top bar (sun, moon, and monitor icons) sets the theme. System follows the
+device setting and is the default; a Light or Dark choice is remembered in that browser. Print always
+uses Light. ASU web standards define no dark theme, so Dark keeps the ASU palette and swaps roles:
+
+| Role | Light | Dark |
+|---|---|---|
+| Ground | White | Gray 1 `#191919` |
+| Panels, footer | Gray 7 / Gray 6 | `#262626` |
+| Text | Gray 1 | Gray 7 |
+| Secondary text | Gray 2 | Gray 5 |
+| Links, dates, group headings | Maroon | Gold (maroon on Gray 1 fails contrast) |
+| Systems tag | Maroon outline on white | White on maroon (8.88:1) |
+| Header logo | Maroon and gold version | White version (`asu-socialwork-horiz-white.png`) |
+
+Dark contrast: Gray 7 on Gray 1 16.84:1; Gray 5 on Gray 1 11.40:1; Gold on Gray 1 11.18:1; Gold on
+`#262626` 9.63:1; Gray 4 on Gray 1 9.56:1. Gold links vs Gray 7 text is 1.51:1, so in-text links stay
+underlined. Button colors are the same in both themes. Theme colors are CSS custom properties set by
+the `theme-light` and `theme-dark` mixins in `_sass/minimal-light.scss`.
 
 ## Scope
 This is a personal faculty site on GitHub Pages, so it uses its own header and footer. If it ever moves to an

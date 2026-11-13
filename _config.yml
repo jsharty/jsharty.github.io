@@ -7,7 +7,8 @@ affiliations:
   - {name: School of Social Work, link: "https://socialwork.asu.edu"}
   - {name: Watts College of Public Service and Community Solutions, link: "https://publicservice.asu.edu"}
   - {name: Arizona State University, link: "https://www.asu.edu"}
-unit_logo: /assets/img/asu-socialwork-horiz.png        # ASU_SocialWork_1_Horiz_RGB_MaroonGold (web copy)
+unit_logo: /assets/img/asu-socialwork-horiz.png
+unit_logo_dark: /assets/img/asu-socialwork-horiz-white.png        # ASU_SocialWork_1_Horiz_RGB_MaroonGold (web copy)
 unit_logo_link: https://socialwork.asu.edu
 favicon: /assets/img/ASU_SunBurst_1_RGB_MaroonGold_150ppi.png
 favicon_dark: /assets/img/ASU_SunBurst_2_RGB_White_150ppi.png

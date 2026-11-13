@@ -7,7 +7,7 @@ permalink: /search.json
 {%- for it in site.data.bib -%}
   {%- assign url = '/' | append: it.page | append: '/#' | append: it.key -%}
   {%- assign pname = it.page | replace: '-', ' ' | capitalize -%}
-  {"t":{{ it.citation | jsonify }},"y":{{ it.year | jsonify }},"s":{{ it.section | jsonify }},"p":{{ pname | jsonify }},"u":{{ url | relative_url | jsonify }},"g":{{ it.pillars | jsonify }}},
+  {"t":{{ it.citation | jsonify }},"y":{{ it.year | jsonify }},"s":{{ it.section | jsonify }},"p":{{ pname | jsonify }},"u":{{ url | relative_url | jsonify }},"g":{{ it.pillars | jsonify }},"d":{{ it.sortdate | jsonify }},"a":{{ it.authorsort | jsonify }},"v":{{ it.venue | downcase | jsonify }},"ti":{{ it.title | downcase | jsonify }},"r":{{ it.role }}},
 {%- endfor -%}
 {%- assign cvmap = "research:/research/,teaching:/teaching/,grants-and-fellowships:/grants/,practice:/practice/,mentoring:/mentoring/,service:/service/,memberships:/service/,positions:/,education:/" | split: "," -%}
 {%- for pair in cvmap -%}
@@ -15,7 +15,7 @@ permalink: /search.json
   {%- assign k0 = kv[0] -%}{%- assign k1 = kv[1] -%}{%- assign sec = site.data.cv[k0] -%}
   {%- for sub in sec.subsections -%}{%- for e in sub.entries -%}
   {%- capture t -%}{% if e.title %}<strong>{{ e.title }}</strong>. {% endif %}{{ e.html }}{% if e.list %} {{ e.list | join: '; ' }}{% endif %}{%- endcapture -%}
-  {"t":{{ t | jsonify }},"y":{{ e.date | jsonify }},"s":{{ sub.heading | default: sec.title | jsonify }},"p":{{ sec.title | jsonify }},"u":{{ k1 | relative_url | jsonify }},"g":{% if e.pillars %}{{ e.pillars | jsonify }}{% else %}[]{% endif %}},
+  {"t":{{ t | jsonify }},"y":{{ e.date | jsonify }},"s":{{ sub.heading | default: sec.title | jsonify }},"p":{{ sec.title | jsonify }},"u":{{ k1 | relative_url | jsonify }},"g":{% if e.pillars %}{{ e.pillars | jsonify }}{% else %}[]{% endif %},"d":{{ e.date | slice: 0, 4 | jsonify }},"a":"harty","v":{{ sec.title | downcase | jsonify }},"ti":{{ t | strip_html | downcase | jsonify }},"r":1},
   {%- endfor -%}{%- endfor -%}
 {%- endfor -%}
 null]

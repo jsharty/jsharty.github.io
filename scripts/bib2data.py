@@ -309,10 +309,12 @@ def main():
         out.append(dict(
             key=key, page=sec['page'], section=sec['heading'], type=e['type'],
             year=year, month=mo, day=day, sortdate=date or '0000',
-            first=auth[0]['last'] if auth else '', authorsort=' '.join(a['last'] for a in auth).lower(), title=title, citation=cit,
+            first=auth[0]['last'] if auth else '', authorsort=(' '.join(a['last'] for a in auth).lower() or 'harty'), title=title, citation=cit,
             text=re.sub(r'<[^>]+>', '', html.unescape(cit)),
             url=url, doi=doi, scholar=gs, pillars=pil, files=files,
-            abstract=abstract, bibtex=bib.strip(), me_first=bool(auth and auth[0]['me'])))
+            abstract=abstract, bibtex=bib.strip(), me_first=bool(auth and auth[0]['me']),
+            venue=re.sub(r'^(\d{4}\s+|the\s+)', '', (jt or sentence_case(f.get('booktitle', '')) or venue or inst), flags=re.I),
+            role=next((i + 1 for i, a in enumerate(auth) if a['me']), 0 if auth else 1)))
     # CV order: newest first, then first author, then title
     out.sort(key=lambda r: (r['year'] or '0000', ), reverse=True)
     out.sort(key=lambda r: (-(int(r['year']) if r['year'].isdigit() else 9999), r.get('authorsort', ''), r['title'].lower()))

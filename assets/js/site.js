@@ -27,6 +27,21 @@
     }
   });
 
+  // Sorting (author, journal/venue, year, title, role)
+  function cmp(mode, A, B) {
+    function s(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+    var byNew = s(B.d, A.d);
+    switch (mode) {
+      case 'old': return s(A.d, B.d) || s(A.ti, B.ti);
+      case 'author': return s(A.a, B.a) || byNew;
+      case 'venue': return s(A.v || '~', B.v || '~') || byNew;
+      case 'title': return s(A.ti, B.ti);
+      case 'role': return (A.r || 99) - (B.r || 99) || byNew;
+      default: return byNew;
+    }
+  }
+  var sortSel = document.getElementById('sort');
+
   // Search + pillar filter
   var q = document.getElementById('q');
   if (!q) return;
@@ -44,6 +59,7 @@
     var u = new URL(location.href);
     q.value ? u.searchParams.set('q', q.value) : u.searchParams.delete('q');
     pillar ? u.searchParams.set('pillar', pillar) : u.searchParams.delete('pillar');
+    if (sortSel) { sortSel.value !== 'cv' ? u.searchParams.set('sort', sortSel.value) : u.searchParams.delete('sort'); }
     history.replaceState(null, '', u);
   }
 
@@ -62,6 +78,8 @@
         if (pillar && (d.g || []).indexOf(pillar) < 0) return;
         if (t.every(function (w) { return hay.indexOf(w) > -1; })) out.push(d);
       });
+      var mode = sortSel ? sortSel.value : 'cv';
+      if (mode !== 'cv') out.sort(function (x, y) { return cmp(mode, x, y); });
       results.innerHTML = out.map(function (d) {
         return '<li class="item"><div class="item-date">' + d.y + '</div><div class="item-body"><p class="where"><a href="' + d.u + '">' + d.p + ' · ' + d.s + '</a></p><p class="cite">' + d.t + '</p></div></li>';
       }).join('');
@@ -69,6 +87,7 @@
       syncUrl();
     };
     q.addEventListener('input', function () { render(); });
+    if (sortSel) { sortSel.value = params.get('sort') || 'cv'; sortSel.addEventListener('change', render); }
     chips.forEach(function (c) { c.addEventListener('click', function () { setChip(c.getAttribute('data-pillar')); render(); }); });
     setChip(pillar);
     return;
@@ -90,9 +109,42 @@
     document.querySelectorAll('.cv-section').forEach(function (s) {
       s.hidden = !s.querySelector('.item:not([hidden])');
     });
-    document.querySelectorAll('h2.group, h3.group').forEach(function (g) { g.hidden = !!(t.length || pillar); });
+    document.querySelectorAll('h2.group, h3.group').forEach(function (g) { g.hidden = !!(t.length || pillar || flat); });
     count.textContent = (t.length || pillar) ? shown + ' of ' + items.length + ' shown' : items.length + ' items';
     syncUrl();
+  }
+  // Remember where each item lives so "CV order" can put everything back.
+  var home = items.map(function (li) { return { li: li, parent: li.parentNode, next: null }; });
+  var flat = null;
+  function key(li) {
+    return { d: li.getAttribute('data-date') || '', a: li.getAttribute('data-author') || '', v: li.getAttribute('data-venue') || '',
+             ti: li.getAttribute('data-title') || '', r: +li.getAttribute('data-role') || 0 };
+  }
+  function resort() {
+    var mode = sortSel.value;
+    var sections = document.querySelectorAll('.content .cv-section, .content h2.group');
+    if (mode === 'cv') {
+      if (flat) {
+        home.forEach(function (h) { h.parent.appendChild(h.li); });
+        flat.remove(); flat = null;
+        document.body.classList.remove('flat');
+      }
+    } else {
+      if (!flat) {
+        flat = document.createElement('ol'); flat.className = 'items flatlist';
+        var anchor = document.querySelector('.filters'); anchor.parentNode.insertBefore(flat, anchor.nextSibling);
+        document.body.classList.add('flat');
+      }
+      items.slice().sort(function (x, y) { return cmp(mode, key(x), key(y)); }).forEach(function (li) { flat.appendChild(li); });
+    }
+    apply();
+  }
+  if (sortSel) {
+    // keep each section's original order for restoring
+    home.forEach(function (h) { h.order = Array.prototype.indexOf.call(h.parent.children, h.li); });
+    home.sort(function (a, b) { return a.order - b.order; });
+    sortSel.value = params.get('sort') || 'cv';
+    sortSel.addEventListener('change', resort);
   }
   q.addEventListener('input', apply);
   chips.forEach(function (c) { c.addEventListener('click', function () { setChip(c.getAttribute('data-pillar')); apply(); }); });
@@ -100,5 +152,19 @@
     a.addEventListener('click', function (e) { e.preventDefault(); setChip(a.getAttribute('href').split('=')[1]); apply(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   });
   setChip(pillar);
-  apply();
+  if (sortSel && sortSel.value !== 'cv') resort(); else apply();
+})();
+
+// ---- Color theme: Light, Dark, or System (follows the device). Choice is remembered in this browser.
+(function () {
+  var root = document.documentElement, btns = document.querySelectorAll('[data-theme-choice]');
+  function current() { try { return localStorage.getItem('theme') || 'system'; } catch (e) { return 'system'; } }
+  function set(choice) {
+    if (choice === 'light' || choice === 'dark') root.setAttribute('data-theme', choice);
+    else root.removeAttribute('data-theme');
+    try { if (choice === 'system') localStorage.removeItem('theme'); else localStorage.setItem('theme', choice); } catch (e) {}
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-choice') === choice)); });
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-theme-choice')); }); });
+  set(current());
 })();

@@ -31,31 +31,69 @@ $pillar-systems: $asu-maroon;  // white text 8.88:1
 $pillar-fathers: $asu-gold;    // Gray 1 text 11.18:1
 $pillar-history: $asu-gray-2;  // white text 9.15:1
 
+// ---- Color themes: Light (default), Dark, or System (follows the device setting).
+// Light is the ASU palette. Dark uses Gray 1 as the ground, Gray 7 text, and Gold for links, dates,
+// and accents (maroon fails contrast on dark grounds). Contrast ratios are listed in BRANDING.md.
+$dark-bg:     #191919;  // Gray 1
+$dark-bg-alt: #262626;  // one step up from Gray 1, for panels and the footer
+$dark-rule:   #333333;
+@mixin theme-light {
+  color-scheme: light;
+  --bg: #{$asu-white}; --bg-alt: #{$asu-gray-7}; --footer-bg: #{$asu-gray-6};
+  --rule: #{$asu-gray-6}; --line: #{$asu-gray-5}; --muted: #{$asu-gray};
+  --text: #{$asu-gray-1}; --text-2: #{$asu-gray-2};
+  --link: #{$asu-maroon}; --accent: #{$asu-maroon};
+  --tag-sys-bg: #{$asu-white}; --tag-sys-fg: #{$asu-maroon}; --tag-sys-ring: #{$asu-maroon};
+  --logo-light: block; --logo-dark: none;
+}
+@mixin theme-dark {
+  color-scheme: dark;
+  --bg: #{$dark-bg}; --bg-alt: #{$dark-bg-alt}; --footer-bg: #{$dark-bg-alt};
+  --rule: #{$dark-rule}; --line: #{$asu-gray-2}; --muted: #{$asu-gray-4};
+  --text: #{$asu-gray-7}; --text-2: #{$asu-gray-5};
+  --link: #{$asu-gold}; --accent: #{$asu-gold};
+  --tag-sys-bg: #{$asu-maroon}; --tag-sys-fg: #{$asu-white}; --tag-sys-ring: #{$asu-maroon};
+  --logo-light: none; --logo-dark: block;
+}
+:root { @include theme-light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { @include theme-dark; } }
+:root[data-theme="dark"] { @include theme-dark; }
+@media print { :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { @include theme-light; } }
+
 // =====================================================================================
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: $asu-white; color: $asu-gray-1; font-family: $asu-font; font-size: 16px; line-height: 1.5; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: $asu-font; font-size: 16px; line-height: 1.5; }
 em, i:not([class]), cite { font-style: normal; }   // no italics
 strong { font-weight: 700; }
 img { max-width: 100%; height: auto; }
 
 // Links: maroon. Underlined in running text because maroon vs Gray 1 text is only 1.98:1
 // (WCAG 1.4.1 needs a non-color cue); menus and buttons are not underlined (ASU standard).
-a { color: $asu-maroon; text-decoration: underline; text-underline-offset: 2px; }
-a:hover, a:focus { color: $asu-maroon; text-decoration-thickness: 2px; }
-:focus-visible { outline: 2px solid $asu-gray-1; outline-offset: 2px; }
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus { color: var(--link); text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: -999px; top: 8px; background: $asu-gold; color: $asu-gray-1; padding: 8px 12px; z-index: 10; font-weight: 700; }
 .skip:focus { left: 8px; }
 
 // ---------------------------------------------------------------- top bar + logo header
 .goldbar { height: 6px; background: $asu-gold; }
-.topbar { border-bottom: 1px solid $asu-gray-6; background: $asu-white; }
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg); }
 .topbar-inner { max-width: 1160px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .unit-logo { display: inline-block; line-height: 0; }
-.unit-logo img { height: 52px; width: auto; }           // clear space comes from the padding around it
-.topbar-asu { font-size: 0.9rem; font-weight: 700; color: $asu-gray-1; text-decoration: none; }
-.topbar-asu:hover, .topbar-asu:focus { color: $asu-maroon; text-decoration: underline; }
+.unit-logo img { height: 52px; width: auto; }
+.unit-logo .logo-light { display: var(--logo-light); }
+.unit-logo .logo-dark { display: var(--logo-dark); }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+// Theme switcher: three-way segmented control (Light, Dark, System)
+.theme-switch { display: inline-flex; border: 1px solid var(--muted); border-radius: 4px; overflow: hidden; }
+.theme-switch button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 0; background: var(--bg); color: var(--text); font: 700 0.85rem $asu-font; cursor: pointer; }
+.theme-switch button + button { border-left: 1px solid var(--muted); }
+.theme-switch button[aria-pressed="true"] { background: $asu-gold; color: $asu-gray-1; }  // 11.18:1
+.theme-switch button:focus-visible { outline: 2px solid var(--text); outline-offset: -4px; }           // clear space comes from the padding around it
+.topbar-asu { font-size: 0.9rem; font-weight: 700; color: var(--text); text-decoration: none; }
+.topbar-asu:hover, .topbar-asu:focus { color: var(--link); text-decoration: underline; }
 
 // ---------------------------------------------------------------- layout
 .wrapper { max-width: 1160px; margin: 0 auto; padding: 0 16px; display: flex; gap: 48px; align-items: flex-start; }
@@ -66,37 +104,37 @@ a:hover, a:focus { color: $asu-maroon; text-decoration-thickness: 2px; }
 
 // ---------------------------------------------------------------- profile block
 .avatar { display: block; width: 168px; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 20%; border-radius: 50%; border: 4px solid $asu-gold; }
-.site-name { margin: 16px 0 4px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; color: $asu-gray-1; }
-.site-name a { color: $asu-gray-1; text-decoration: none; }
-.site-name a:hover, .site-name a:focus { color: $asu-maroon; text-decoration: underline; }
-.position, .affil { margin: 0; color: $asu-gray-2; font-size: 0.95rem; line-height: 1.4; }
-.affil a { color: $asu-gray-2; text-decoration: none; }
-.affil a:hover, .affil a:focus { color: $asu-maroon; text-decoration: underline; }
+.site-name { margin: 16px 0 4px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; color: var(--text); }
+.site-name a { color: var(--text); text-decoration: none; }
+.site-name a:hover, .site-name a:focus { color: var(--link); text-decoration: underline; }
+.position, .affil { margin: 0; color: var(--text-2); font-size: 0.95rem; line-height: 1.4; }
+.affil a { color: var(--text-2); text-decoration: none; }
+.affil a:hover, .affil a:focus { color: var(--link); text-decoration: underline; }
 .affil-asu { font-weight: 700; }
 .email { margin: 6px 0 0; font-size: 0.95rem; overflow-wrap: anywhere; }
 .social { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
-.social a { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: $asu-gray-6; color: $asu-gray-1; text-decoration: none; font-size: 1.05rem; transition: transform .15s ease; }
-.social a:hover, .social a:focus-visible { transform: scale(1.05); outline: 2px solid $asu-gray-1; outline-offset: 2px; }
+.social a { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: var(--rule); color: var(--text); text-decoration: none; font-size: 1.05rem; transition: transform .15s ease; }
+.social a:hover, .social a:focus-visible { transform: scale(1.05); outline: 2px solid var(--text); outline-offset: 2px; }
 .cv-btn { margin: 4px 0 20px; }
 
 // ---------------------------------------------------------------- navigation (title case, gold underline = current page)
-.sitenav ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid $asu-gray-5; }
-.sitenav li a { display: block; padding: 7px 0; color: $asu-gray-1; text-decoration: none; font-size: 1rem; }
+.sitenav ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.sitenav li a { display: block; padding: 7px 0; color: var(--text); text-decoration: none; font-size: 1rem; }
 .sitenav li a span { padding-bottom: 2px; border-bottom: 4px solid transparent; }
-.sitenav li a:hover, .sitenav li a:focus { color: $asu-maroon; }
+.sitenav li a:hover, .sitenav li a:focus { color: var(--link); }
 .sitenav li a.active { font-weight: 700; }
 .sitenav li a.active span { border-bottom-color: $asu-gold; }
 .nav-toggle { display: none; }
 
 // ---------------------------------------------------------------- headings (sentence case; gold highlight bar)
-h1, h2, h3 { color: $asu-gray-1; line-height: 1.25; font-weight: 700; }
+h1, h2, h3 { color: var(--text); line-height: 1.25; font-weight: 700; }
 h1 { font-size: 2.25rem; margin: 0 0 24px; padding-bottom: 14px; position: relative; }
 h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 64px; height: 6px; background: $asu-gold; }
 h2 { font-size: 1.5rem; margin: 40px 0 14px; padding-bottom: 10px; position: relative; }
 h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 4px; background: $asu-gold; }
-h2.group { font-size: 1.65rem; color: $asu-maroon; margin-top: 48px; }
+h2.group { font-size: 1.65rem; color: var(--accent); margin-top: 48px; }
 h3 { font-size: 1.2rem; margin: 28px 0 8px; }
-h2 .n { color: $asu-gray; font-weight: 400; font-size: 1rem; }
+h2 .n { color: var(--muted); font-weight: 400; font-size: 1rem; }
 
 // ---------------------------------------------------------------- buttons
 // Rectangular, 4px radius, Arial Bold, sentence case. Same hue on hover/focus; slight scale + Gray 1 outline.
@@ -107,7 +145,7 @@ h2 .n { color: $asu-gray; font-weight: 400; font-size: 1rem; }
   transition: transform .15s ease;
 }
 .btn:hover, .btn:focus-visible { transform: scale(1.05); text-decoration: none; }
-.btn:focus-visible { outline: 2px solid $asu-gray-1; outline-offset: 2px; }
+.btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 // One ASU secondary color per link type (contrast verified, WCAG 2.1 relative luminance)
 .btn-pdf     { background: $asu-blue;      color: $asu-gray-1; } // 6.12:1
 .btn-code    { background: $asu-green;     color: $asu-gray-1; } // 7.69:1
@@ -120,70 +158,76 @@ h2 .n { color: $asu-gray; font-weight: 400; font-size: 1rem; }
 // Primary call to action: gold (the only gold button on the page)
 .btn-gold { background: $asu-gold; color: $asu-gray-1; font-size: 0.95rem; padding: 8px 16px; }
 .btn-gold:hover { color: $asu-gray-1; }
-.btn-plain { background: $asu-white; color: $asu-gray-1; box-shadow: inset 0 0 0 1px $asu-gray-4; }
+.btn-plain { background: var(--bg); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
 .btns { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
 .dim { display: inline-block; vertical-align: middle; }
 
 // ---------------------------------------------------------------- search + pillar filters
-.filters { margin: 0 0 8px; padding: 14px; background: $asu-gray-7; border: 1px solid $asu-gray-6; border-radius: 4px; }
-.searchbox { display: flex; align-items: center; gap: 8px; background: $asu-white; border: 1px solid $asu-gray; border-radius: 4px; padding: 0 12px; }
-.searchbox i { color: $asu-gray-2; }
-.searchbox input { flex: 1; min-width: 0; border: 0; padding: 10px 0; font: 16px $asu-font; color: $asu-gray-1; background: transparent; }
+.filters { margin: 0 0 8px; padding: 14px; background: var(--bg-alt); border: 1px solid var(--rule); border-radius: 4px; }
+.searchbox { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--muted); border-radius: 4px; padding: 0 12px; }
+.searchbox i { color: var(--text-2); }
+.searchbox input { flex: 1; min-width: 0; border: 0; padding: 10px 0; font: 16px $asu-font; color: var(--text); background: transparent; }
 .searchbox input:focus-visible { outline: none; }
-.searchbox:focus-within { outline: 2px solid $asu-gray-1; outline-offset: 2px; }
+.searchbox:focus-within { outline: 2px solid var(--text); outline-offset: 2px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .chips[hidden] { display: none; }
-.chip { font: 700 0.875rem $asu-font; padding: 4px 12px; border-radius: 4px; border: 1px solid $asu-gray; background: $asu-white; color: $asu-gray-1; cursor: pointer; transition: transform .15s ease; }
+.chip { font: 700 0.875rem $asu-font; padding: 4px 12px; border-radius: 4px; border: 1px solid var(--muted); background: var(--bg); color: var(--text); cursor: pointer; transition: transform .15s ease; }
 .chip:hover { transform: scale(1.05); }
-.chip[aria-pressed="true"] { background: $asu-gray-1; border-color: $asu-gray-1; color: $asu-white; }
+.chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
 .chip-systems[aria-pressed="true"] { background: $pillar-systems; border-color: $pillar-systems; color: $asu-white; }
 .chip-fathers[aria-pressed="true"] { background: $pillar-fathers; border-color: $pillar-fathers; color: $asu-gray-1; }
 .chip-history[aria-pressed="true"] { background: $pillar-history; border-color: $pillar-history; color: $asu-white; }
-.count { margin: 8px 0 0; font-size: 0.9rem; color: $asu-gray-2; }
+.count { margin: 8px 0 0; font-size: 0.9rem; color: var(--text-2); }
+.sortbox { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.sortbox label { font-weight: 700; font-size: 0.9rem; }
+.sortbox select { font: 16px $asu-font; color: var(--text); background: var(--bg); border: 1px solid var(--muted); border-radius: 4px; padding: 6px 10px; max-width: 100%; }
+.item-section { display: none; }
+.flat .item-section { display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-2); margin-bottom: 2px !important; }
+.flatlist { margin-top: 12px; max-width: 760px; }
 
 // ---------------------------------------------------------------- entries
 .items { list-style: none; margin: 0; padding: 0; }
-.item { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid $asu-gray-6; }
+.item { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
 .item:last-child { border-bottom: 0; }
 .item[hidden], .cv-section[hidden], h2[hidden], h3[hidden] { display: none; }
-.item-date { font-weight: 700; color: $asu-maroon; font-size: 0.95rem; }   // dates in maroon bold
-.item-date span { display: block; font-weight: 400; font-size: 0.875rem; color: $asu-gray-2; }
+.item-date { font-weight: 700; color: var(--accent); font-size: 0.95rem; }   // dates in maroon bold
+.item-date span { display: block; font-weight: 400; font-size: 0.875rem; color: var(--text-2); }
 .item-body { min-width: 0; }
 .item-body p { margin: 0; }
 .item-title { font-weight: 700; }
 .has-cover .item-body { display: grid; grid-template-columns: 1fr 96px; column-gap: 16px; }
 .has-cover .item-body > * { grid-column: 1; }
-.has-cover .cover { grid-column: 2; grid-row: 1 / span 4; width: 96px; border: 1px solid $asu-gray-5; align-self: start; }   // no shadows
+.has-cover .cover { grid-column: 2; grid-row: 1 / span 4; width: 96px; border: 1px solid var(--line); align-self: start; }   // no shadows
 .cite { overflow-wrap: anywhere; }
 .award { display: inline-block; margin-left: 4px; padding: 0 8px; background: $asu-gold; color: $asu-gray-1; font-size: 0.8rem; font-weight: 700; border-radius: 4px; }
 .tags { margin-top: 8px !important; display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font-size: 0.8rem; font-weight: 700; padding: 1px 8px; border-radius: 4px; text-decoration: none; }
 .tag:hover, .tag:focus { text-decoration: underline; }
-.tag-systems { background: $asu-white; color: $asu-maroon; box-shadow: inset 0 0 0 1px $asu-maroon; }
+.tag-systems { background: var(--tag-sys-bg); color: var(--tag-sys-fg); box-shadow: inset 0 0 0 1px var(--tag-sys-ring); }
 .tag-fathers { background: $asu-gold; color: $asu-gray-1; }
 .tag-history { background: $asu-gray-6; color: $asu-gray-1; }
-.panel { margin-top: 10px; padding: 12px 14px; background: $asu-gray-7; border-left: 4px solid $asu-gold; font-size: 0.95rem; }
+.panel { margin-top: 10px; padding: 12px 14px; background: var(--bg-alt); border-left: 4px solid $asu-gold; font-size: 0.95rem; }
 .panel pre { margin: 0 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; font: 0.82rem/1.5 Menlo, Consolas, monospace; }
 .sublist { margin: 6px 0 0; padding-left: 20px; }
 .where { font-size: 0.875rem; font-weight: 700; margin-bottom: 2px !important; }
 
 // ---------------------------------------------------------------- pillar cards (home)
 .pillar-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 8px 0; }
-.pillar-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 4px; border-top: 6px solid; background: $asu-gray-7; color: $asu-gray-1; text-decoration: none; transition: transform .15s ease; }
-.pillar-card:hover, .pillar-card:focus-visible { transform: scale(1.03); color: $asu-gray-1; }
+.pillar-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 4px; border-top: 6px solid; background: var(--bg-alt); color: var(--text); text-decoration: none; transition: transform .15s ease; }
+.pillar-card:hover, .pillar-card:focus-visible { transform: scale(1.03); color: var(--text); }
 .pillar-systems { border-top-color: $pillar-systems; }
 .pillar-fathers { border-top-color: $pillar-fathers; }
 .pillar-history { border-top-color: $pillar-history; }
 .pillar-name { font-weight: 700; font-size: 1.1rem; }
-.pillar-blurb { font-size: 0.95rem; color: $asu-gray-2; flex: 1; }
-.pillar-n { font-size: 0.875rem; font-weight: 700; color: $asu-maroon; text-decoration: underline; }
+.pillar-blurb { font-size: 0.95rem; color: var(--text-2); flex: 1; }
+.pillar-n { font-size: 0.875rem; font-weight: 700; color: var(--link); text-decoration: underline; }
 
 // ---------------------------------------------------------------- footer (Gray 6 ground)
-.site-footer { margin-top: 56px; background: $asu-gray-6; color: $asu-gray-1; border-top: 6px solid $asu-gold; }
+.site-footer { margin-top: 56px; background: var(--footer-bg); color: var(--text); border-top: 6px solid $asu-gold; }
 .site-footer-inner { max-width: 1160px; margin: 0 auto; padding: 20px 16px; font-size: 0.9rem; }
 .site-footer p { margin: 0 0 6px; }
-.site-footer a { color: $asu-gray-1; }
-.site-footer a:hover, .site-footer a:focus { color: $asu-maroon; }
+.site-footer a { color: var(--text); }
+.site-footer a:hover, .site-footer a:focus { color: var(--link); }
 .site-footer .asu-line { font-weight: 700; }
 
 // ---------------------------------------------------------------- small screens
@@ -198,7 +242,7 @@ h2 .n { color: $asu-gray; font-weight: 400; font-size: 1rem; }
   .site-name { margin-top: 0; }
   .social, .cv-btn, .sitenav { grid-column: 1 / -1; }
   .cv-btn { justify-self: start; }
-  .nav-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 12px; font: 700 1rem $asu-font; background: $asu-gray-6; border: 0; border-radius: 4px; color: $asu-gray-1; cursor: pointer; }
+  .nav-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 12px; font: 700 1rem $asu-font; background: var(--rule); border: 0; border-radius: 4px; color: var(--text); cursor: pointer; }
   .sitenav ul { display: none; border-top: 0; }
   .sitenav ul.open { display: block; }
   .content { padding-top: 12px; }
@@ -209,12 +253,14 @@ h2 .n { color: $asu-gray; font-weight: 400; font-size: 1rem; }
   .item { grid-template-columns: 1fr; gap: 4px; }
   .has-cover .item-body { grid-template-columns: 1fr 64px; }
   .has-cover .cover { width: 64px; }
+  .theme-switch .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .theme-switch button { padding: 8px 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
   .btn:hover, .btn:focus-visible, .chip:hover, .social a:hover, .pillar-card:hover { transform: none; }
 }
 @media print {
-  .goldbar, .topbar, .sidebar .social, .sitenav, .filters, .btns, .cv-btn, .tags, .site-footer { display: none; }
+  .theme-switch, .goldbar, .topbar, .sidebar .social, .sitenav, .filters, .btns, .cv-btn, .tags, .site-footer { display: none; }
   .wrapper { display: block; }
 }

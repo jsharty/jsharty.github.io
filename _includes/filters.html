@@ -11,5 +11,19 @@
     <button type="button" class="chip chip-{{ p }}" data-pillar="{{ p }}" aria-pressed="false">{{ site.data.pillars.labels[p] }}</button>
     {% endfor %}
   </div>
+  {%- if include.sort -%}
+  <div class="sortbox">
+    <label for="sort">Sort by</label>
+    <select id="sort">
+      <option value="cv">CV order (by section)</option>
+      <option value="new">Year, newest first</option>
+      <option value="old">Year, oldest first</option>
+      <option value="author">First author, A to Z</option>
+      <option value="venue">{{ include.venue_label | default: "Journal or venue" }}, A to Z</option>
+      <option value="title">Title, A to Z</option>
+      <option value="role">My role (first-authored first)</option>
+    </select>
+  </div>
+  {%- endif -%}
   <p class="count" aria-live="polite"></p>
 </div>

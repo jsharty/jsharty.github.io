@@ -1,9 +1,10 @@
 {%- assign it = include.item -%}
 {%- assign kind = include.kind -%}
 {%- capture search -%}{{ it.text }} {{ it.year }} {{ it.section }} {% for p in it.pillars %}{{ site.data.pillars.labels[p] }} {% endfor %}{%- endcapture -%}
-<li class="item{% if it.files.cover and kind == 'pub' %} has-cover{% endif %}" id="{{ it.key }}" data-pillars="{{ it.pillars | join: ' ' }}" data-search="{{ search | downcase | escape }}">
+<li class="item{% if it.files.cover and kind == 'pub' %} has-cover{% endif %}" id="{{ it.key }}" data-pillars="{{ it.pillars | join: ' ' }}" data-search="{{ search | downcase | escape }}" data-date="{{ it.sortdate }}" data-author="{{ it.authorsort | escape }}" data-venue="{{ it.venue | downcase | escape }}" data-title="{{ it.title | downcase | escape }}" data-role="{{ it.role }}" data-section="{{ it.section | escape }}">
   <div class="item-date">{{ it.year }}{% if kind == 'talk' and it.month != '' %}<span>{{ it.month }} {{ it.day }}</span>{% endif %}</div>
   <div class="item-body">
+    <p class="item-section">{{ it.section }}</p>
     {%- if kind == 'pub' and it.files.cover -%}
     <img class="cover" src="{{ it.files.cover | relative_url }}" alt="Cover of the journal or book where this appeared" loading="lazy" width="600" height="800">
     {%- endif -%}
