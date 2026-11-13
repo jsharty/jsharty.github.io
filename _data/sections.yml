@@ -25,7 +25,7 @@ conferences:
   - {keyword: cv-conf-poster, heading: "Posters"}
   - {keyword: cv-conf-roundtables, heading: "Roundtables and workshops"}
   - {keyword: cv-conf-sigs, heading: "Groups"}
-  - {keyword: cv-conf-doctoral, heading: "Mentorship"}
+  - {keyword: cv-conf-doctoral, heading: "Mentorship", hide: true}   # removed from the site at Justin's request
   - {keyword: cv-conf-other, heading: "Other"}
 presentations:
   - {keyword: cv-pres-invitedtalks, heading: "Invited talks"}
