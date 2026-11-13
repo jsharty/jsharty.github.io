@@ -1,16 +1,34 @@
-{%- comment -%} Compact list of the most recent items. include.items = sorted array, include.n = count {%- endcomment -%}
-{%- assign months = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," -%}
-<ol class="items recent">
-{%- for it in include.items limit: include.n -%}
-  <li class="item">
-    <div class="item-date">{{ it.year }}{% if include.talk and it.month != '' %}<span>{{ it.month }} {{ it.day }}</span>{% endif %}</div>
-    <div class="item-body">
-      <p class="item-kind">{{ it.section }}</p>
-      <p class="cite">{{ it.citation }}</p>
+{%- comment -%} Carousel of the most recent items. include.items = sorted array, include.n = count, include.talk = true for talks {%- endcomment -%}
+{%- assign shown = include.items | slice: 0, include.n -%}
+{%- if include.talk -%}{%- assign noun = "talk" -%}{%- assign label = "Recent talks and conference events" -%}{%- else -%}{%- assign noun = "publication" -%}{%- assign label = "Recent publications" -%}{%- endif -%}
+<section class="carousel" aria-roledescription="carousel" aria-label="{{ label }}">
+<div class="carousel-track" tabindex="0" aria-label="{{ label }} slides">
+{%- for it in shown -%}
+<div class="feature" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ shown.size }}">
+  {%- if include.talk -%}
+  <div class="feature-date"><span class="m">{{ it.month | default: "&nbsp;" }}{% if it.day != '' %} {{ it.day }}{% endif %}</span><span class="y">{{ it.year }}</span></div>
+  {%- elsif it.files.cover -%}
+  <img class="feature-cover" src="{{ it.files.cover | relative_url }}" alt="Cover of {{ it.venue | escape }}" loading="lazy" width="600" height="800">
+  {%- else -%}
+  <div class="feature-date"><span class="y">{{ it.year }}</span></div>
+  {%- endif -%}
+  <div class="feature-body">
+    <p class="feature-kind">{{ it.section }}</p>
+    <h3 class="feature-title">{% if it.url != '' %}<a href="{{ it.url }}">{{ it.title }}</a>{% else %}{{ it.title }}{% endif %}</h3>
+    <p class="feature-meta">{{ it.venue }}{% unless include.talk %}, {{ it.year }}{% endunless %}</p>
+    <p class="feature-authors">{{ it.text | split: it.title | first | strip | remove_last: "." | escape | replace: "Harty, J. S.", "<strong>Harty, J. S.</strong>" }}</p>
+    <div class="btns">
       {%- if it.url != '' -%}
-      <p class="recent-link"><a href="{{ it.url }}" aria-label="{% if include.talk %}Program{% else %}Read{% endif %}: {{ it.title | escape }}">{% if include.talk %}Program{% else %}Read it{% endif %} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
+      {%- if include.talk -%}<a class="btn btn-project" href="{{ it.url }}" aria-label="Program: {{ it.title | escape }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Program</a>
+      {%- else -%}<a class="btn btn-project" href="{{ it.url }}" aria-label="Read: {{ it.title | escape }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Read</a>{%- endif -%}
       {%- endif -%}
+      {%- if it.files.paper -%}<a class="btn btn-pdf" href="{{ it.files.paper | relative_url }}" aria-label="PDF: {{ it.title | escape }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF</a>{%- endif -%}
+      {%- if it.files.slides -%}<a class="btn btn-video" href="{{ it.files.slides | relative_url }}" aria-label="Slides: {{ it.title | escape }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> Slides</a>{%- endif -%}
+      <a class="btn btn-other" href="{{ '/' | append: it.page | append: '/' | relative_url }}#{{ it.key }}" aria-label="Full citation: {{ it.title | escape }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Citation</a>
     </div>
-  </li>
+  </div>
+</div>
 {%- endfor -%}
-</ol>
+</div>
+{% include carousel_controls.html n=shown.size noun=noun %}
+</section>

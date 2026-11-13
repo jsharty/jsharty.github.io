@@ -168,3 +168,25 @@
   btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-theme-choice')); }); });
   set(current());
 })();
+
+// ---- Home page carousels (featured, recent publications, recent talks): arrows, dots, swipe/scroll,
+// keyboard; each rotates every 8 s (staggered) unless paused, hovered, focused, or the visitor prefers
+// reduced motion (WCAG 2.2.2).
+document.querySelectorAll('.carousel').forEach(function (c, idx) {
+  var track = c.querySelector('.carousel-track'), slides = track.children, dots = c.querySelectorAll('.carousel-dot');
+  var pauseBtn = c.querySelector('.carousel-pause'), i = 0, timer = null, hold = false;
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, paused = reduced;
+  function go(n) { i = (n + slides.length) % slides.length; track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduced ? 'auto' : 'smooth' }); mark(); }
+  function mark() { dots.forEach(function (d, k) { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); }); }
+  function start() { stop(); if (paused || hold || slides.length < 2) return; timer = setTimeout(function tick() { go(i + 1); timer = setTimeout(tick, 8000); }, 8000 + idx * 2600); }
+  function stop() { if (timer) clearTimeout(timer); timer = null; }
+  function setPaused(v) { paused = v; pauseBtn.setAttribute('aria-pressed', String(v)); pauseBtn.setAttribute('aria-label', v ? 'Start automatic rotation' : 'Pause automatic rotation'); pauseBtn.innerHTML = '<i class="fa-solid fa-' + (v ? 'play' : 'pause') + '" aria-hidden="true"></i>'; start(); }
+  c.querySelectorAll('[data-dir]').forEach(function (b) { b.addEventListener('click', function () { go(i + Number(b.getAttribute('data-dir'))); start(); }); });
+  dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); start(); }); });
+  pauseBtn.addEventListener('click', function () { setPaused(!paused); });
+  track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); } });
+  var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { var n = Math.round(track.scrollLeft / track.clientWidth); if (n !== i) { i = n; mark(); } }, 80); });
+  c.addEventListener('mouseenter', function () { hold = true; stop(); }); c.addEventListener('mouseleave', function () { hold = false; start(); });
+  c.addEventListener('focusin', function () { hold = true; stop(); }); c.addEventListener('focusout', function (e) { if (!c.contains(e.relatedTarget)) { hold = false; start(); } });
+  setPaused(paused);
+});

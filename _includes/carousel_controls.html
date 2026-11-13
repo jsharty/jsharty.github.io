@@ -1,0 +1,9 @@
+{%- comment -%} Arrows, dots, and pause for a carousel. include.n = number of slides, include.noun = e.g. "paper" {%- endcomment -%}
+<div class="carousel-controls">
+  <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous {{ include.noun }}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+  <div class="carousel-dots" role="group" aria-label="Choose a {{ include.noun }}">
+  {%- for k in (1..include.n) -%}<button type="button" class="carousel-dot" aria-label="Show {{ include.noun }} {{ k }}"{% if k == 1 %} aria-current="true"{% endif %}></button>{%- endfor -%}
+  </div>
+  <button type="button" class="carousel-btn" data-dir="1" aria-label="Next {{ include.noun }}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+  <button type="button" class="carousel-btn carousel-pause" aria-label="Pause automatic rotation" aria-pressed="false"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
+</div>

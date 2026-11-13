@@ -12,13 +12,14 @@ Dr. Harty is dedicated to social justice, explicitly working to dismantle system
 
 ## Featured research
 
-<div class="featured">
+<section class="carousel" aria-roledescription="carousel" aria-label="Featured research">
+<div class="carousel-track" tabindex="0" aria-label="Featured research slides">
 {%- for f in site.data.featured -%}
 {%- assign it = nil -%}
 {%- for e in site.data.bib -%}{%- if e.key == f -%}{%- assign it = e -%}{%- break -%}{%- endif -%}{%- endfor -%}
 {%- unless it -%}{%- for e in site.data.bib -%}{%- if e.title contains f -%}{%- assign it = e -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endunless -%}
 {%- if it -%}
-<article class="feature">
+<div class="feature" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ site.data.featured.size }}">
   {%- if it.files.cover -%}<img class="feature-cover" src="{{ it.files.cover | relative_url }}" alt="Cover of {{ it.venue | escape }}" loading="lazy" width="600" height="800">{%- endif -%}
   <div class="feature-body">
     <h3 class="feature-title">{% if it.url != '' %}<a href="{{ it.url }}">{{ it.title }}</a>{% else %}{{ it.title }}{% endif %}</h3>
@@ -30,10 +31,12 @@ Dr. Harty is dedicated to social justice, explicitly working to dismantle system
       <a class="btn btn-other" href="{{ '/publications/' | relative_url }}#{{ it.key }}" aria-label="Full citation: {{ it.title | escape }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Citation</a>
     </div>
   </div>
-</article>
+</div>
 {%- endif -%}
 {%- endfor -%}
 </div>
+{% include carousel_controls.html n=site.data.featured.size noun="paper" %}
+</section>
 
 ## Recent publications
 
