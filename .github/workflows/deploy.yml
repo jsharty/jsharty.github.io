@@ -43,6 +43,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages
-          # cname: justinharty.com   # uncomment AFTER pointing justinharty.com DNS at GitHub Pages (see HOW-TO-UPDATE.md)
+          cname: justinharty.com
           force_orphan: true
           commit_message: "Deploy site from ${{ github.sha }}"
