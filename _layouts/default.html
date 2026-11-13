@@ -32,7 +32,7 @@
       </div>
     </div>
   </header>
-  <div class="wrapper">
+  <div class="wrapper{% if page.rail %} has-rail{% endif %}">
     <aside class="sidebar" aria-label="Profile and site menu">
       <a href="{{ '/' | relative_url }}" class="avatar-link" aria-label="Home">
         <img class="avatar" src="{{ site.avatar | relative_url }}" alt="Portrait of Justin S. Harty" width="600" height="883">
@@ -65,6 +65,7 @@
     <main id="main" class="content">
       {{ content }}
     </main>
+    {% if page.rail == 'linkedin' %}{% include linkedin_rail.html %}{% endif %}
   </div>
   <footer class="site-footer">
     <div class="site-footer-inner">

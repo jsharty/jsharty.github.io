@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+rail: linkedin
 ---
 # Justin S. Harty, PhD, LCSW
 

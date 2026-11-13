@@ -1,0 +1,10 @@
+# Right-hand "Recent LinkedIn posts" sidebar on the home page.
+# LinkedIn has no public feed for personal profiles, so posts are listed here by hand, newest first.
+# To add one: on LinkedIn, open the post's "..." menu > "Copy link to post", then add an entry:
+#   - date: 2026-11-10
+#     url: https://www.linkedin.com/posts/...
+#     text: "First few sentences of the post."
+#     image: /assets/linkedin/2026-11-10.jpg   # optional
+profile: https://www.linkedin.com/in/justinharty
+show: 5
+posts: []

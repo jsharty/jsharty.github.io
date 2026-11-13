@@ -64,3 +64,8 @@ When you're ready to retire the Wix site, at your domain registrar (or in Wix's 
 ## Home page: featured research and recent lists
 - **Featured research:** edit `_data/featured.yml`. List citekeys (or a distinctive piece of a title) in the order you want them shown.
 - **Recent publications / recent talks:** these update automatically from the .bib file (newest first). Change how many show in `_data/home.yml`.
+
+## Home page: recent LinkedIn posts (right sidebar)
+LinkedIn has no public feed for personal profiles, so the sidebar reads `_data/linkedin.yml`. Add each new
+post at the top of `posts:` with its date, link ("..." menu > "Copy link to post"), and the first few
+sentences. `show:` sets how many appear.

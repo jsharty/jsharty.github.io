@@ -1,0 +1,19 @@
+{%- assign li = site.data.linkedin -%}
+<aside class="rail" aria-labelledby="li-heading">
+  <h2 id="li-heading"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> Recent LinkedIn posts</h2>
+  {%- if li.posts and li.posts.size > 0 -%}
+  <ol class="li-posts">
+    {%- for p in li.posts limit: li.show -%}
+    <li class="li-post">
+      <p class="li-date"><time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: '%B %-d, %Y' }}</time></p>
+      {%- if p.image -%}<img class="li-img" src="{{ p.image | relative_url }}" alt="" loading="lazy">{%- endif -%}
+      <p class="li-text">{{ p.text | escape }}</p>
+      <p class="li-link"><a href="{{ p.url }}" aria-label="Read on LinkedIn: post from {{ p.date | date: '%B %-d, %Y' }}">Read on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
+    </li>
+    {%- endfor -%}
+  </ol>
+  {%- else -%}
+  <p class="li-empty">See my latest posts and updates on LinkedIn.</p>
+  {%- endif -%}
+  <a class="btn btn-project li-follow" href="{{ li.profile }}"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> Follow on LinkedIn</a>
+</aside>
