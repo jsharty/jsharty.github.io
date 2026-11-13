@@ -12,7 +12,7 @@ unit_logo_dark: /assets/img/asu-socialwork-horiz-white.png        # ASU_SocialWo
 unit_logo_link: https://search.asu.edu/profile/4157923
 favicon: /assets/img/ASU_SunBurst_1_RGB_MaroonGold_150ppi.png
 favicon_dark: /assets/img/ASU_SunBurst_2_RGB_White_150ppi.png
-email: justinharty@asu.edu
+# email: not shown on the site (by request); it stays in the downloadable CV
 description: >-
   Justin S. Harty, PhD, LCSW, Assistant Professor in the School of Social Work at Arizona State
   University. Research on child welfare systems, fathers and fatherhood, and social work history.

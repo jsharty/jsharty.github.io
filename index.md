@@ -77,5 +77,4 @@ Dr. Harty is dedicated to social justice, explicitly working to dismantle system
 ## Professional license
 {% include cv_sections.html key="professional-license" level=3 %}
 
-## Mailing address
-{% include cv_sections.html key="mailing-address" level=3 %}
+

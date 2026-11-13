@@ -41,7 +41,6 @@
       <p class="position">{{ site.position }}</p>
       {% if site.appointment %}<p class="position">{{ site.appointment }}</p>{% endif %}
       {% for a in site.affiliations %}<p class="affil{% if forloop.last %} affil-asu{% endif %}"><a href="{{ a.link }}">{{ a.name }}</a></p>{% endfor %}
-      <p class="email"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
       <div class="social" aria-label="Profiles">
         {% if site.links.asu_profile %}<a href="{{ site.links.asu_profile }}" title="ASU profile" aria-label="ASU profile"><i class="fa-solid fa-building-columns"></i></a>{% endif %}
         {% if site.links.google_scholar %}<a href="{{ site.links.google_scholar }}" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>{% endif %}
