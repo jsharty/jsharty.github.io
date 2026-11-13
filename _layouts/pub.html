@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{%- assign it = nil -%}
+{%- for e in site.data.bib -%}{%- if e.key == page.pubkey -%}{%- assign it = e -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- if it.page == 'publications' -%}{%- assign back = 'All publications' -%}{%- else -%}{%- assign back = 'All public scholarship' -%}{%- endif -%}
+<p class="crumb"><a href="{{ '/' | append: it.page | append: '/' | relative_url }}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ back }}</a></p>
+<h1 class="pub-h1">{{ it.title }}</h1>
+<p class="pub-meta">{{ it.section }} · {{ it.venue }}, {{ it.year }}</p>
+<ol class="items pub-detail">
+{% include bib_item.html item=it kind="pub" detail=true %}
+</ol>
+{%- if it.abstract != '' -%}
+<h2>Abstract</h2>
+<p class="pub-abstract">{{ it.abstract | escape }}</p>
+{%- endif -%}

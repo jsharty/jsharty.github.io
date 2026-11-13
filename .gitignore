@@ -4,3 +4,4 @@ _site/
 vendor/
 .bundle/
 _data/bib.yml
+_pubs/

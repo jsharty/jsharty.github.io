@@ -1,0 +1,75 @@
+{%- comment -%} Search engine, social preview (Open Graph / X), Google Scholar (Highwire), and schema.org tags. {%- endcomment -%}
+{%- assign it = nil -%}
+{%- if page.pubkey -%}{%- for e in site.data.bib -%}{%- if e.key == page.pubkey -%}{%- assign it = e -%}{%- break -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- if it -%}
+  {%- assign desc = it.abstract | default: it.text | strip_newlines | truncate: 300 -%}
+  {%- if it.files.cover -%}{%- assign img = it.files.cover | absolute_url -%}{%- else -%}{%- assign img = site.avatar | absolute_url -%}{%- endif -%}
+{%- else -%}
+  {%- assign desc = page.description | default: site.description | strip_newlines | truncate: 300 -%}
+  {%- assign img = site.avatar | absolute_url -%}
+{%- endif -%}
+  <meta name="description" content="{{ desc | escape }}">
+  <meta name="author" content="{{ site.title }}">
+  {% if site.google_site_verification != "" %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+  {% if site.bing_site_verification != "" %}<meta name="msvalidate.01" content="{{ site.bing_site_verification }}">{% endif %}
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{% if it %}{{ it.title | escape }}{% elsif page.url == '/' %}{{ site.title }}, {{ site.position }}{% else %}{{ page.title | escape }} | {{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ desc | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if it %}article{% elsif page.url == '/' %}profile{% else %}website{% endif %}">
+  <meta property="og:image" content="{{ img }}">
+  <meta property="og:image:alt" content="{% if it and it.files.cover %}Cover of {{ it.venue | escape }}{% else %}Portrait of {{ site.title }}{% endif %}">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  {% if site.links.x %}<meta name="twitter:site" content="@{{ site.links.x | split: '/' | last }}">{% endif %}
+  <meta name="twitter:title" content="{% if it %}{{ it.title | escape }}{% else %}{{ page.title | default: site.title | escape }}{% endif %}">
+  <meta name="twitter:description" content="{{ desc | escape }}">
+  <meta name="twitter:image" content="{{ img }}">
+{%- if it %}
+  <!-- Google Scholar (Highwire Press tags) -->
+  <meta name="citation_title" content="{{ it.title | escape }}">
+  {%- for a in it.meta.authors %}
+  <meta name="citation_author" content="{{ a | escape }}">
+  {%- endfor %}
+  <meta name="citation_publication_date" content="{{ it.meta.date | default: it.year }}">
+  {%- if it.type == 'article' and it.meta.journal != '' %}
+  <meta name="citation_journal_title" content="{{ it.meta.journal | escape }}">
+  {%- endif %}
+  {%- if it.meta.booktitle != '' %}
+  <meta name="citation_inbook_title" content="{{ it.meta.booktitle | escape }}">
+  {%- endif %}
+  {%- if it.type == 'report' and it.meta.publisher != '' %}
+  <meta name="citation_technical_report_institution" content="{{ it.meta.publisher | escape }}">
+  {%- elsif it.meta.publisher != '' %}
+  <meta name="citation_publisher" content="{{ it.meta.publisher | escape }}">
+  {%- endif %}
+  {%- if it.meta.volume != '' %}<meta name="citation_volume" content="{{ it.meta.volume | escape }}">{% endif %}
+  {%- if it.meta.issue != '' %}<meta name="citation_issue" content="{{ it.meta.issue | escape }}">{% endif %}
+  {%- if it.meta.firstpage != '' %}<meta name="citation_firstpage" content="{{ it.meta.firstpage | escape }}">{% endif %}
+  {%- if it.meta.lastpage != '' %}<meta name="citation_lastpage" content="{{ it.meta.lastpage | escape }}">{% endif %}
+  {%- if it.meta.isbn != '' %}<meta name="citation_isbn" content="{{ it.meta.isbn | escape }}">{% endif %}
+  {%- if it.meta.issn != '' %}<meta name="citation_issn" content="{{ it.meta.issn | escape }}">{% endif %}
+  {%- if it.doi != '' %}<meta name="citation_doi" content="{{ it.doi | escape }}">{% endif %}
+  <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
+  {%- if it.files.paper %}
+  <meta name="citation_pdf_url" content="{{ it.files.paper | absolute_url }}">
+  {%- endif %}
+  <meta name="citation_language" content="en">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"{% if it.type == 'article' %}ScholarlyArticle{% elsif it.type == 'report' %}Report{% elsif it.type == 'incollection' or it.type == 'inbook' %}Chapter{% elsif it.type == 'book' %}Book{% else %}CreativeWork{% endif %}",
+   "headline":{{ it.title | jsonify }},"name":{{ it.title | jsonify }},
+   "author":[{% for a in it.meta.authors %}{"@type":"Person","name":{{ a | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+   "datePublished":{{ it.meta.date | replace: '/', '-' | default: it.year | jsonify }},
+   {% if it.meta.journal != '' and it.type == 'article' %}"isPartOf":{"@type":"Periodical","name":{{ it.meta.journal | jsonify }}},{% endif %}
+   {% if it.doi != '' %}"identifier":{"@type":"PropertyValue","propertyID":"DOI","value":{{ it.doi | jsonify }}},"sameAs":{{ 'https://doi.org/' | append: it.doi | jsonify }},{% endif %}
+   {% if it.abstract != '' %}"abstract":{{ it.abstract | jsonify }},{% endif %}
+   "url":{{ page.url | absolute_url | jsonify }}}
+  </script>
+{%- elsif page.url == '/' %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":{{ site.title | jsonify }},"url":{{ '/' | absolute_url | jsonify }},
+   "image":{{ site.avatar | absolute_url | jsonify }},"jobTitle":{{ site.position | jsonify }},
+   "affiliation":{"@type":"CollegeOrUniversity","name":"Arizona State University"},
+   "sameAs":[{% for l in site.links %}{{ l[1] | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]}
+  </script>
+{%- endif %}

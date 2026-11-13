@@ -69,3 +69,8 @@ When you're ready to retire the Wix site, at your domain registrar (or in Wix's 
 LinkedIn has no public feed for personal profiles, so the sidebar reads `_data/linkedin.yml`. Add each new
 post at the top of `posts:` with its date, link ("..." menu > "Copy link to post"), and the first few
 sentences. `show:` sets how many appear.
+
+## Search engines and Google Scholar
+- Every publication (plus bibliographies and guides) gets its own page with Google Scholar tags, built automatically from the .bib file. Fill in authors' full names, volume, issue, pages, and DOI in Zotero for the best results.
+- `sitemap.xml` and `robots.txt` are generated on every build. Bing and other IndexNow engines are notified after each deploy.
+- Google: verify the site in Google Search Console, then paste the code into `google_site_verification:` in `_config.yml` (Bing: `bing_site_verification:`).

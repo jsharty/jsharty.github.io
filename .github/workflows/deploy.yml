@@ -46,3 +46,23 @@ jobs:
           cname: justinharty.com
           force_orphan: true
           commit_message: "Deploy site from ${{ github.sha }}"
+
+      # Tell Bing (and other IndexNow search engines) which pages changed. Google does not use IndexNow;
+      # it reads sitemap.xml through Google Search Console.
+      - name: Notify search engines (IndexNow)
+        if: github.event_name != 'schedule'
+        continue-on-error: true
+        run: |
+          sleep 90
+          KEY=$(grep '^indexnow_key:' _config.yml | awk '{print $2}')
+          python3 - "$KEY" <<'PY'
+          import json, re, sys, urllib.request
+          key = sys.argv[1]
+          urls = re.findall(r'<loc>(.*?)</loc>', open('_site/sitemap.xml').read())
+          body = json.dumps({"host": "justinharty.com", "key": key, "keyLocation": f"https://justinharty.com/{key}.txt", "urlList": urls[:10000]}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body, headers={"Content-Type": "application/json; charset=utf-8"})
+          try:
+              print("IndexNow:", urllib.request.urlopen(req, timeout=30).status, len(urls), "URLs")
+          except Exception as e:
+              print("IndexNow failed:", e)
+          PY

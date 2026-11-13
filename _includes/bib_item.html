@@ -30,14 +30,15 @@
       {%- if it.files.poster -%}<a class="btn btn-other" href="{{ it.files.poster | relative_url }}"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{%- endif -%}
       {%- if it.files.handout -%}<a class="btn btn-other" href="{{ it.files.handout | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Handout</a>{%- endif -%}
       {%- if it.files.recording -%}<a class="btn btn-video" href="{{ it.files.recording | relative_url }}"><i class="fa-solid fa-video" aria-hidden="true"></i> Recording</a>{%- endif -%}
-      {%- if it.abstract != '' -%}<button type="button" class="btn btn-other" data-toggle="abs-{{ it.key }}" aria-expanded="false" aria-controls="abs-{{ it.key }}"><i class="fa-solid fa-align-left" aria-hidden="true"></i> Abstract</button>{%- endif -%}
+      {%- if kind == 'pub' and it.detail != '' and include.detail != true -%}<a class="btn btn-other" href="{{ it.detail | relative_url }}" aria-label="Details page: {{ it.title | escape }}"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Details</a>{%- endif -%}
+      {%- if it.abstract != '' and include.detail != true -%}<button type="button" class="btn btn-other" data-toggle="abs-{{ it.key }}" aria-expanded="false" aria-controls="abs-{{ it.key }}"><i class="fa-solid fa-align-left" aria-hidden="true"></i> Abstract</button>{%- endif -%}
       {%- if kind == 'pub' -%}
       <button type="button" class="btn btn-bibtex" data-toggle="bib-{{ it.key }}" aria-expanded="false" aria-controls="bib-{{ it.key }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</button>
       <a class="btn btn-other" href="{{ it.scholar }}" aria-label="Google Scholar: {{ it.title | escape }}"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>
       {%- if it.doi != '' -%}<span class="__dimensions_badge_embed__ dim" data-doi="{{ it.doi }}" data-style="small_rectangle" data-hide-zero-citations="false" data-legend="hover-right"></span>{%- endif -%}
       {%- endif -%}
     </div>
-    {%- if it.abstract != '' -%}<div class="panel" id="abs-{{ it.key }}" hidden><p>{{ it.abstract | escape }}</p></div>{%- endif -%}
+    {%- if it.abstract != '' and include.detail != true -%}<div class="panel" id="abs-{{ it.key }}" hidden><p>{{ it.abstract | escape }}</p></div>{%- endif -%}
     {%- if kind == 'pub' -%}<div class="panel" id="bib-{{ it.key }}" hidden><pre>{{ it.bibtex | escape }}</pre><button type="button" class="btn btn-bibtex copy" data-copy="bib-{{ it.key }}">Copy citation (BibTeX)</button></div>{%- endif -%}
   </div>
 </li>
