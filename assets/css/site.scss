@@ -1,0 +1,153 @@
+---
+---
+// Layout from Yaoyao Liu's Minimal Light theme (fixed profile column + content column),
+// restyled to Arizona State University web standards (brandguide.asu.edu):
+// Arial only, body >= 16px, no italics, left-aligned text <= 700px wide, sentence-case headings,
+// maroon links underlined in body text, gold reserved for the primary call to action.
+@import "asu"; // ASU tokens in _sass/_asu.scss
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: $asu-white; color: $asu-gray-1;
+  font-family: $asu-font; font-size: 16px; line-height: 1.6;
+}
+em, i:not([class]), cite { font-style: normal; } // ASU web standard: no italics
+strong { font-weight: 700; }
+a { color: $asu-maroon; text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: $asu-gray-1; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid $asu-blue; outline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 0; background: $asu-gold; color: $asu-gray-1; padding: 8px 12px; z-index: 10; }
+.skip:focus { left: 8px; }
+
+// ---------------------------------------------------------------- layout
+.wrapper { max-width: 1160px; margin: 0 auto; padding: 0 16px; display: flex; gap: 48px; align-items: flex-start; }
+.sidebar { flex: 0 0 260px; position: sticky; top: 0; padding: 40px 0 24px; max-height: 100vh; overflow-y: auto; }
+.content { flex: 1 1 auto; min-width: 0; padding: 40px 0 32px; }
+.content > p, .content > ul, .content > h2, .content > h3, .cv-section, .filters, .footer, .results { max-width: 760px; }
+.chips[hidden] { display: none; }
+
+// ---------------------------------------------------------------- sidebar
+.avatar { display: block; width: 168px; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 20%; border-radius: 50%; border: 4px solid $asu-gold; }
+.site-name { margin: 16px 0 4px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; }
+.site-name a { color: $asu-gray-1; text-decoration: none; }
+.site-name a:hover { text-decoration: underline; }
+.position { margin: 0; color: $asu-gray-2; font-size: 0.95rem; line-height: 1.4; }
+.affil { margin: 4px 0 0; font-weight: 700; }
+.affil a { color: $asu-maroon; text-decoration: none; }
+.affil a:hover { text-decoration: underline; }
+.email { margin: 4px 0 0; font-size: 0.95rem; overflow-wrap: anywhere; }
+.social { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.social a { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: $asu-gray-6; color: $asu-gray-1; text-decoration: none; font-size: 1.05rem; transition: transform .15s; }
+.social a:hover { background: $asu-maroon; color: $asu-white; transform: scale(1.05); }
+.cv-btn { margin: 4px 0 20px; }
+.sitenav ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid $asu-gray-5; }
+.sitenav li a { display: block; padding: 7px 0 7px 12px; color: $asu-gray-1; text-decoration: none; border-left: 4px solid transparent; font-size: 0.98rem; }
+.sitenav li a:hover { border-left-color: $asu-gold; background: $asu-gray-7; }
+.sitenav li a.active { border-left-color: $asu-maroon; font-weight: 700; }
+.nav-toggle { display: none; }
+
+// ---------------------------------------------------------------- headings & text
+h1, h2, h3 { color: $asu-gray-1; line-height: 1.25; font-weight: 700; }
+h1 { font-size: 2.25rem; margin: 0 0 20px; padding-bottom: 12px; position: relative; }
+h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 72px; height: 6px; background: $asu-gold; }
+h2 { font-size: 1.5rem; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid $asu-gray-5; }
+h2.group { font-size: 1.6rem; border-bottom: 3px solid $asu-maroon; margin-top: 44px; }
+h3 { font-size: 1.2rem; margin: 26px 0 8px; }
+h2 .n { color: $asu-gray-3; font-weight: 400; font-size: 1rem; }
+.content > p { margin: 0 0 16px; }
+
+// ---------------------------------------------------------------- buttons
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; margin: 0;
+  font: 700 0.85rem/1.5 $asu-font; color: $asu-gray-1; background: $asu-white;
+  border: 1px solid $asu-gray-4; border-radius: 400rem; text-decoration: none; cursor: pointer;
+  transition: transform .15s ease;
+}
+.btn:hover { transform: scale(1.05); color: $asu-gray-1; border-color: $asu-gray-1; }
+.btn-gold { background: $asu-gold; border-color: $asu-gold; font-size: 0.95rem; padding: 8px 16px; }
+.btn-gold:hover { border-color: $asu-gold; }
+.btns { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+.dim { display: inline-block; vertical-align: middle; margin-left: 2px; }
+
+// ---------------------------------------------------------------- filters
+.filters { margin: 0 0 8px; padding: 14px; background: $asu-gray-7; border: 1px solid $asu-gray-6; border-radius: 4px; }
+.searchbox { display: flex; align-items: center; gap: 8px; background: $asu-white; border: 1px solid $asu-gray-4; border-radius: 4px; padding: 0 12px; }
+.searchbox i { color: $asu-gray-3; }
+.searchbox input { flex: 1; min-width: 0; border: 0; outline-offset: 4px; padding: 10px 0; font: 16px $asu-font; color: $asu-gray-1; background: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip { font: 700 0.85rem $asu-font; padding: 5px 12px; border-radius: 400rem; border: 1px solid $asu-gray-4; background: $asu-white; color: $asu-gray-1; cursor: pointer; transition: transform .15s; }
+.chip:hover { transform: scale(1.05); }
+.chip[aria-pressed="true"] { background: $asu-gray-1; border-color: $asu-gray-1; color: $asu-white; }
+.chip-systems[aria-pressed="true"] { background: $pillar-systems; border-color: $pillar-systems; color: $asu-white; }
+.chip-fathers[aria-pressed="true"] { background: $pillar-fathers; border-color: $pillar-fathers; color: $asu-gray-1; }
+.chip-history[aria-pressed="true"] { background: $pillar-history; border-color: $pillar-history; color: $asu-white; }
+.count { margin: 8px 0 0; font-size: 0.9rem; color: $asu-gray-2; }
+
+// ---------------------------------------------------------------- entries
+.items { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid $asu-gray-6; }
+.item:last-child { border-bottom: 0; }
+.item[hidden], .cv-section[hidden], h2[hidden], h3[hidden] { display: none; }
+.item-date { font-weight: 700; color: $asu-gray-2; font-size: 0.95rem; }
+.item-date span { display: block; font-weight: 400; font-size: 0.85rem; }
+.item-body { min-width: 0; }
+.item-body p { margin: 0; }
+.item-title { font-weight: 700; }
+.has-cover .item-body { display: grid; grid-template-columns: 1fr 96px; column-gap: 16px; }
+.has-cover .item-body > * { grid-column: 1; }
+.has-cover .cover { grid-column: 2; grid-row: 1 / span 4; width: 96px; border: 1px solid $asu-gray-5; align-self: start; }
+.cite { overflow-wrap: anywhere; }
+.award { display: inline-block; margin-left: 4px; padding: 0 8px; background: $asu-gold; font-size: 0.8rem; font-weight: 700; border-radius: 400rem; }
+.tags { margin-top: 6px !important; display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 0.78rem; font-weight: 700; padding: 1px 9px; border-radius: 400rem; text-decoration: none; color: $asu-gray-1; border: 1px solid transparent; }
+.tag:hover { color: $asu-gray-1; border-color: $asu-gray-1; }
+.tag-systems { background: $pillar-systems-tint; }
+.tag-fathers { background: $pillar-fathers-tint; }
+.tag-history { background: $pillar-history-tint; }
+.panel { margin-top: 10px; padding: 12px 14px; background: $asu-gray-7; border-left: 4px solid $asu-gold; font-size: 0.95rem; }
+.panel pre { margin: 0 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; font: 0.82rem/1.5 Menlo, Consolas, monospace; }
+.sublist { margin: 6px 0 0; padding-left: 20px; }
+.where { font-size: 0.85rem; font-weight: 700; margin-bottom: 2px !important; }
+
+// ---------------------------------------------------------------- pillar cards (home)
+.pillar-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 760px; margin: 8px 0 8px; }
+.pillar-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 4px; border-top: 6px solid; background: $asu-gray-7; color: $asu-gray-1; text-decoration: none; transition: transform .15s; }
+.pillar-card:hover { transform: scale(1.03); color: $asu-gray-1; }
+.pillar-systems { border-top-color: $pillar-systems; }
+.pillar-fathers { border-top-color: $pillar-fathers; }
+.pillar-history { border-top-color: $pillar-history; }
+.pillar-name { font-weight: 700; font-size: 1.1rem; }
+.pillar-blurb { font-size: 0.92rem; color: $asu-gray-2; flex: 1; }
+.pillar-n { font-size: 0.85rem; font-weight: 700; color: $asu-maroon; }
+
+// ---------------------------------------------------------------- footer
+.footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid $asu-gray-5; font-size: 0.85rem; color: $asu-gray-2; }
+
+// ---------------------------------------------------------------- small screens
+@media (max-width: 900px) {
+  .wrapper { display: block; }
+  .sidebar { position: static; max-height: none; padding: 24px 0 8px; display: grid; grid-template-columns: 96px 1fr; column-gap: 16px; align-items: start; }
+  .avatar-link { grid-row: 1 / span 5; }
+  .avatar { width: 96px; border-width: 3px; }
+  .site-name { margin-top: 0; }
+  .social, .cv-btn, .sitenav { grid-column: 1 / -1; }
+  .cv-btn { justify-self: start; }
+  .nav-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 12px; font: 700 1rem $asu-font; background: $asu-gray-6; border: 0; border-radius: 4px; color: $asu-gray-1; cursor: pointer; }
+  .sitenav ul { display: none; border-top: 0; }
+  .sitenav ul.open { display: block; }
+  .content { padding-top: 16px; }
+  h1 { font-size: 1.8rem; }
+  .pillar-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .item { grid-template-columns: 1fr; gap: 4px; }
+  .has-cover .item-body { grid-template-columns: 1fr 64px; }
+  .has-cover .cover { width: 64px; }
+}
+@media print {
+  .sidebar .social, .sitenav, .filters, .btns, .cv-btn, .tags { display: none; }
+  .wrapper { display: block; }
+}

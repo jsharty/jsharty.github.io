@@ -1,0 +1,27 @@
+// ASU brand tokens (brandguide.asu.edu). Change colors here and the whole site follows.
+// Swap these for the ASU starter design tokens if you prefer.
+$asu-maroon: #8C1D40;
+$asu-gold:   #FFC627;
+$asu-white:  #FFFFFF;
+$asu-gray-1: #191919; // text
+$asu-gray-2: #484848;
+$asu-gray-3: #747474;
+$asu-gray-4: #BFBFBF;
+$asu-gray-5: #D0D0D0;
+$asu-gray-6: #E8E8E8;
+$asu-gray-7: #FAFAFA;
+// ASU secondary palette (accents only)
+$asu-blue:   #00A3E0;
+$asu-green:  #78BE20;
+$asu-orange: #FF7F32;
+
+// Web font: Arial is ASU's web font; this is ASU's specified fallback stack.
+$asu-font: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
+
+// Research pillars (solid = selected chip / card bar, tint = tag background)
+$pillar-systems: $asu-maroon;
+$pillar-fathers: $asu-gold;   // gold takes dark text
+$pillar-history: $asu-gray-2;
+$pillar-systems-tint: #F3E4E9;
+$pillar-fathers-tint: #FFF4D1;
+$pillar-history-tint: $asu-gray-6;

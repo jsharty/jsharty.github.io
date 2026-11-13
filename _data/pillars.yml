@@ -1,0 +1,16 @@
+# The three pillars of the research program (from the CV's expertise statement).
+# Items are tagged automatically by these word stems (searched in the title)
+# unless the Zotero item has a tag pillar-systems / pillar-fathers / pillar-history,
+# or the citekey is listed in _data/pillar_overrides.yml.
+order: [systems, fathers, history]
+labels:
+  systems: "Child Welfare & Systems"
+  fathers: "Fathers & Fatherhood"
+  history: "Social Work History"
+blurbs:
+  systems: "Child welfare and foster care: father engagement in public systems and outcomes of young people, including young fathers, aging out of care."
+  fathers: "Racial and ethnic minority fatherhood, father involvement, and father engagement."
+  history: "Black contributions to the history of social welfare and social work, and the profession's accountability."
+systems: [child welfare, care-experienced, counties, reconnecting youth, romantic relationships and parenting, foster, care leav, leaving care, transition-age, transition age, transition aged, calyouth, homeless, maltreat, abuse, child protective, permanency, caseworker, home visit, home-visit, incarcerat, criminal legal, criminal justice, housing, food insecurity, intersecting systems, human services, public child, extended care, out of care, young adults' child welfare, in state care, overlapping systems, separated families, policy implementation, transitional independent, service context, county-level, county level, intimate partner violence, prevention research, opioid, child well-being, regulatory]
+fathers: [father, fatherhood, paternal, dads, daddy, babywearing, men's, co-parent, coparent, nonresident]
+history: [histor, past is prologue, divisive times, resistance, anti-racis, antiracis, racism, anticolonial, anti-colonial, decoloniz, white supremacy, labor movement, Black social work, mfp, testimonios, curriculum, redlining, eugenic, frazier, bridging eras, black social work, black contributions, black psychologists, frazier, archiv, minority fellowship, minority research fellowship, origins of opportunity, red scare, white supremacy, task force, legacy, legacies, abolition, colonial, accountability or complicity, policing, pandemics, americanization, mutual aid, social welfare history]

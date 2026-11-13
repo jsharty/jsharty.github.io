@@ -1,0 +1,17 @@
+{%- comment -%}
+Renders every CV section assigned to this page in _data/sections.yml, in CV order,
+from the generated _data/bib.yml. include.page = key in sections.yml; include.kind = pub | talk | lecture
+{%- endcomment -%}
+{%- assign secs = site.data.sections[include.page] -%}
+{%- assign entries = site.data.bib | where: "page", include.page -%}
+{%- for s in secs -%}
+  {%- if s.hide -%}{%- continue -%}{%- endif -%}
+  {%- assign list = entries | where: "section", s.heading -%}
+  {%- if list.size == 0 -%}{%- continue -%}{%- endif -%}
+  <section class="cv-section" id="{{ s.heading | slugify }}">
+    <h2>{{ s.heading }} <span class="n">({{ list.size }})</span></h2>
+    <ol class="items">
+      {%- for it in list -%}{%- include bib_item.html item=it kind=include.kind -%}{%- endfor -%}
+    </ol>
+  </section>
+{%- endfor -%}

@@ -1,97 +1,535 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
-
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+# Hand-edited CV content that is not in the .bib (education, positions, teaching, grants, service...).
+# Generated from the November 2026 CV; edit freely. Each entry: date, html (allowed: <strong>, <br>),
+# optional: when, title, list, links, pillars (systems / fathers / history).
+education:
+  title: Education
+  subsections:
+  - heading: ''
+    entries:
+    - date: '2022'
+      title: Ph.D. Social Work and Social Welfare
+      html: 'University of Chicago Crown Family School of Social Work, Policy, and Practice<br>Dissertation: Fatherhood in foster care: Black fathers aging out of state care in Illinois<br>Committee: Waldo E. Johnson Jr. (Chair), Mark E. Courtney, &amp; Jennifer L. Bellamy'
+    - date: '2013'
+      title: M.S.W. Social Work
+      html: 'University of Illinois Chicago Jane Addams College of Social Work<br>Concentration: Children and Families'
+    - date: '2011'
+      title: B.A. Philosophy and Sociology
+      html: 'University of Illinois Urbana-Champaign College of Liberal Arts and Sciences<br>Minor: African American Studies'
+    - date: '2008'
+      title: A.A. General Studies
+      html: 'William Rainey Harper College Liberal Arts and Social Sciences<br>Concentration: Philosophy and Sociology'
+positions:
+  title: Positions
+  subsections:
+  - heading: Faculty
+    entries:
+    - date: 2022–
+      html: Assistant Professor<br>School of Social Work<br>Arizona State University
+      links:
+      - https://socialwork.asu.edu
+  - heading: Appointments
+    entries:
+    - date: 2026–
+      html: Director<br>Center for Child Well-Being<br>Arizona State University
+      links:
+      - https://childwellbeing.asu.edu
+    - date: '2025'
+      html: Interim Director<br>Center for Child Well-Being<br>Arizona State University
+      links:
+      - https://childwellbeing.asu.edu
+  - heading: Affiliations
+    entries:
+    - date: 2023–26
+      html: Faculty Affiliate<br>Center for Child Well-Being<br>Arizona State University
+      links:
+      - https://childwellbeing.asu.edu/about/faculty-research-affiliates
+    - date: 2022–
+      html: Faculty Affiliate<br>Center for Equitable Family &amp; Community Well-Being<br>University of Michigan School of Social Work
+      links:
+      - https://ssw.umich.edu/offices/family-community-wellbeing/faculty-affiliates
+    - date: 2022–
+      html: Faculty Affiliate<br>California Child Welfare Indicators Project<br>University of California at Berkeley School of Social Welfare
+      links:
+      - https://ccwip.berkeley.edu/bio.html
+professional-license:
+  title: Professional License
+  subsections:
+  - heading: ''
+    entries:
+    - date: 2019–
+      html: 'Licensed Clinical Social Worker, #49.021165, Illinois'
+scholarship-teaching-and-practice-expertise:
+  title: Scholarship, Teaching, and Practice Expertise
+  subsections:
+  - heading: ''
+    entries:
+    - date: Systems
+      html: 'Child welfare: Father engagement; Foster care: Outcomes of young fathers aging out of care'
+    - date: Fathers
+      html: Racial and ethnic minority fatherhood, father involvement, and father engagement
+    - date: History
+      html: Black contributions to the history of social welfare and social work
+research:
+  title: Research
+  subsections:
+  - heading: Projects
+    entries:
+    - date: 2024–27
+      html: 'Co-Investigator. Arizona State Opioid Response (PI: Dr. Natasha Mendoza). Arizona State University Southwest Interdisciplinary Research Center, sponsored by Arizona Health Care Cost Containment System and Substance Abuse and Mental Health Services Administration.'
+      pillars:
+      - systems
+    - date: 2024–26
+      html: 'Research Consultant. Extended Foster Care Success Coach Program: Development and Implement an Evaluation Plan (PI: Dr. James Herbert Williams). Arizona State University Center for Child Well-being, sponsored by The Arizona Department of Child Safety.'
+      pillars:
+      - systems
+    - date: 2024–25
+      html: 'Co-Principal Investigator. Adapting myPlan for the Child Welfare Context (Co-PIs: Drs. Ijeoma Ogbonnaya &amp; Jill Messing). Arizona State University Office of Gender-Based Violence, Sponsored by Watts Public Service and Community Solutions.'
+      pillars:
+      - systems
+    - date: 2022–25
+      html: 'Principal Investigator. Expectant and Parenting Youth in Foster Care (Co-I: Dr. Kristen Ethier). Arizona State University School of Social Work, made possible with $40,000 grant from The Transition-Age Youth Research &amp; Evaluation Hub funded by the Conrad N. Hilton Foundation.'
+      pillars:
+      - systems
+    - date: 2022–24
+      html: Principal Investigator. Dad Together Evaluation. Arizona State University’s Center for Child Well-Being.
+    - date: 2022–
+      html: 'Researcher. Dads Matter-Home Visiting, Dads Matter-HV (Co-PIs: Drs. Neil B. Guterman &amp; Jennifer L. Bellamy). New York University &amp; University of Denver.'
+      pillars:
+      - systems
+      - fathers
+    - date: 2016–22
+      html: 'Research Assistant. Dads Matter-Home Visiting, Dads Matter-HV (Co-PIs: Drs. Neil B. Guterman &amp; Jennifer L. Bellamy). University of Chicago Crown Family School of Social Work, Policy, and Practice.'
+      pillars:
+      - systems
+      - fathers
+    - date: 2017–23
+      html: 'Project Coordinator. California Youth Transitions to Adulthood Study, CalYOUTH (PI: Dr. Mark E. Courtney). University of Chicago Crown Family School of Social Work, Policy, and Practice.'
+      pillars:
+      - systems
+    - date: 2015–23
+      html: 'Research Assistant. California Youth Transitions to Adulthood Study, CalYOUTH (PI: Dr. Mark E. Courtney). University of Chicago Crown Family School of Social Work, Policy, and Practice.'
+      pillars:
+      - systems
+  - heading: Awards
+    entries:
+    - date: '2020'
+      html: W. Allison Davis Research Award ($4,900 for dissertation research). Funded by the Andrew W. Mellon Foundation.
+      links:
+      - http://ssa.uchicago.edu/allison-davis-research-award-recipients
+    - date: '2019'
+      html: American Psychological Association Dissertation Award ($400 for dissertation research). Funded by the American Psychological Association.
+      links:
+      - https://www.apadivisions.org/division-37/publications/newsletters/advocate/2019/10/award-winners
+teaching:
+  title: Teaching
+  subsections:
+  - heading: Faculty
+    entries:
+    - date: PhD-level
+      html: Arizona State University School of Social Work
+      list:
+      - 'Welfare State (SWG731: S2024, S2026)'
+      links:
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWG&catalogNbr=731
+    - date: MSW-level
+      html: Arizona State University School of Social Work
+      list:
+      - 'Diversity, Oppression, and Social Justice in Social Work (SWG533: F2022, F2023, F2024, F2025)'
+      - 'Social Policy and Services I (SWG531: F2023, F2024, F2025)'
+      links:
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWG&catalogNbr=533
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWG&catalogNbr=531
+      pillars:
+      - systems
+    - date: BSW-level
+      html: Arizona State University School of Social Work
+      list:
+      - 'Child Welfare Practice (SWU442: S2023, S2024)'
+      - 'Social Welfare, Work, and Justice in the US (SWU294: S2026)'
+      links:
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWU&catalogNbr=442
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWU&catalogNbr=394
+      pillars:
+      - systems
+  - heading: Lead Instructor
+    entries:
+    - date: MSW-level
+      html: -Arizona State University School of Social Work
+      list:
+      - 'Program Evaluation (SWG623: F2024–Current)'
+      links:
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWG&catalogNbr=623
+    - date: BSW-level
+      html: Arizona State University School of Social Work
+      list:
+      - 'Social Services Perspective of Government (SWU182: F2023–Current)'
+      links:
+      - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWU&catalogNbr=182
+      pillars:
+      - systems
+  - heading: Guest Lecturer
+    from_bib: teaching
+    note: Entries come from the .bib (keyword cv-teach-guestlectures).
+  - heading: Adjunct
+    entries:
+    - date: MA-level
+      html: University of Chicago Crown Family School of Social Work, Policy, and Practice
+      list:
+      - Doctoral Workshop on Theory in Social Work Research (AY2021–2022)
+      - Human Behavior in the Social Environment (S2021; S2020; W2019)
+      - Poverty, Inequality, and the Welfare State (A2021; A2022)
+      links:
+      - https://crownschool.uchicago.edu/courses/doctoral-workshop-theory-social-work-research
+      - https://crownschool.uchicago.edu/courses/human-behavior-social-environment
+      - https://crownschool.uchicago.edu/courses/poverty-inequality-and-welfare-state
+      pillars:
+      - systems
+    - date: MSW-level
+      html: University of Pennsylvania School of Social Policy &amp; Practice
+      list:
+      - Introduction to Social Work Research (S2021)
+      links:
+      - https://www.sp2.upenn.edu/academics/master-of-social-work/curriculum/course-descriptions/#SWRK615Introduc-19c29b4c2564-6
+      pillars:
+      - systems
+    - date: University of Illinois at Chicago Jane Addams College of Social Work
+      html: 1. Critical Social Work in a Multicultural Society (S2021)
+      links:
+      - https://catalog.uic.edu/search/?P=SOCW%20411
+  - heading: Teaching Assistant
+    entries:
+    - date: MA-level
+      html: University of Chicago Crown Family School of Social Work, Policy, and Practice
+      list:
+      - Social Intervention Programs and Policies (A2018)
+      - Human Behavior in the Social Environment (A2018)
+      links:
+      - https://crownschool.uchicago.edu/courses/social-intervention-programs-and-policies-ii
+      - https://crownschool.uchicago.edu/courses/human-behavior-social-environment
+      pillars:
+      - systems
+  - heading: Awards
+    entries:
+    - date: '2024'
+      when: Fall
+      html: Professor of Impact Award (Recognized by a student in SWG531 Social Policy and Services). Awarded by the Watts College of Public Service and Community Solutions.
+      pillars:
+      - systems
+    - date: '2024'
+      when: Fall
+      html: Professor of Impact Award (Recognized by a student in SWG533 Diversity, Oppression and Social Justice in Social Work). Awarded by the Watts College of Public Service and Community Solutions.
+      pillars:
+      - systems
+    - date: '2024'
+      when: Fall
+      html: Award for Distinguished Instruction (Distinguished level of instruction in SWG531 Social Policy and Services). Awarded by the Arizona State University School of Social Work.
+      pillars:
+      - systems
+    - date: '2024'
+      when: Spring
+      html: Award for Distinguished Instruction (Distinguished level of instruction in SWG731 Welfare State). Awarded by the Arizona State University School of Social Work.
+    - date: '2023'
+      when: Fall
+      html: Professor of Impact Award (Recognized by a student in SWG533 Diversity, Oppression and Social Justice in Social Work). Awarded by the Watts College of Public Service and Community Solutions.
+      pillars:
+      - systems
+    - date: '2022'
+      when: Fall
+      html: Award for Distinguished Instruction (Distinguished level of instruction in SWG533 Diversity, Oppression and Social Justice in Social Work). Awarded by the Arizona State University School of Social Work.
+    - date: '2021'
+      html: Simons Doctoral Student Teaching Award ($1,000 monetary prize). Funded by the University of Chicago Crown Family School of Social Work, Policy, and Practice.
+      links:
+      - https://crownschool.uchicago.edu/congratulations-our-students-and-class-2021
+      pillars:
+      - systems
+grants-and-fellowships:
+  title: Grants and Fellowships
+  subsections:
+  - heading: Research Fellowships
+    entries:
+    - date: 2019–21
+      html: Council on Social Work Education Minority Fellowship Program ($75,000). Funded by the Substance Abuse and Mental Health Services Administration.
+      links:
+      - https://www.cswe.org/Centers-Initiatives/Initiatives/Minority-Fellowship-Program/MFP-Doctoral-Students/Meet-the-Fellows
+      pillars:
+      - systems
+      - history
+    - date: '2021'
+      html: Child Well-Being Research Network (Access to research grants). Funded by the Doris Duke Charitable Foundation.
+      links:
+      - http://childwellbeingresearchnetwork.org/network
+    - date: '2019'
+      html: University of Chicago Urban Doctoral Fellow ($1,000 for dissertation research). Funded by the Mansueto Institute for Urban Innovation.
+      links:
+      - https://miurban.uchicago.edu/urbandocfellows/
+  - heading: Research Training Grants
+    entries:
+    - date: '2023'
+      html: 'NIH R25 Building a Multidisciplinary Pipeline of Researchers in Child Abuse and Neglect: 2023 Training Institute for Early Career or Transitioning Scholars; Co-PIs Cathy Spatz Widom &amp; Melissa Jonson-Reid (Travel grant and accommodation). Funded by the National Institute of Health R25 Education Project and Eunice Kennedy Shriver National Institute of Child Health &amp; Human Development.'
+      links:
+      - https://cicm.wustl.edu/invitation-to-apply-for-early-career-transitioning-scholars-to-the-2023-training-institute/
+      pillars:
+      - systems
+    - date: '2018'
+      html: Haruv Institute’s 6th International Workshop on Child Maltreatment (Travel grant and accommodation). Funded by the Charles and Lynn Schusterman Family Foundation.
+      links:
+      - https://haruv.org.il/en/inter-activ/courses-and-training/the-fifth-international-workshop-for-doctoral-students-the-haruv-institute/
+      pillars:
+      - systems
+    - date: '2018'
+      html: Fragile Families Summer Data Workshop (Travel grant and accommodation). Funded by the Eunice Kennedy Shriver National Institute of Child Health &amp; Human Development.
+      links:
+      - https://fragilefamilies.princeton.edu/people/summer-data-workshop/2018-workshop
+    - date: '2018'
+      html: 'Clinton Global Initiative University (Conference and workshop accommodation). Funded by the Clinton Foundation for Daddy Doula: Father-Focused Enhancements to Existing Community-based Doula Services intervention development, P.I. Harty, J. S..'
+      links:
+      - https://www.clintonfoundation.org/clinton-global-initiative/meetings/cgi-university/2018
+      pillars:
+      - systems
+      - fathers
+    - date: '2012'
+      html: Jane Addams Child Welfare Traineeship ($9,000 grant and Illinois DCFS Training). Funded by the National Child Welfare Workforce Institute.
+      pillars:
+      - systems
+  - heading: Research Grant Consultancy
+    entries:
+    - date: '2021'
+      html: 'Robert Wood Johnson Foundation Policies4Action (Grant ID 78818, Qualitative Consultant). Honoring Indigenous Families: An Evaluation of the Implementation and Outcomes of the Nebraska Indian Child Welfare Act, P.I. Claudette Grinnell-Davis.'
+      pillars:
+      - systems
+practice:
+  title: Practice
+  subsections:
+  - heading: Post-MSW Experience
+    entries:
+    - date: 2013–15
+      html: Foster Care Caseworker. Lawrence Hall Youth Services. Chicago, IL.
+      pillars:
+      - systems
+  - heading: Pre-MSW Internship Experience
+    entries:
+    - date: 2012–13
+      html: Placement and Permanency MSW Intern. Illinois Department of Children and Family Services. Chicago, IL.
+      pillars:
+      - systems
+    - date: 2011–12
+      html: Foster Care Clinical Services MSW Intern. Lawrence Hall Youth Services. Chicago, IL.
+      pillars:
+      - systems
+    - date: '2009'
+      html: Behavioral Health Division Administrative Intern. Milwaukee County Government. Wauwatosa, WI.
+  - heading: Professional Licensure
+    entries:
+    - date: 2019–
+      html: Licensed Clinical Social Worker (LCSW). Illinois Department of Financial and Professional Regulation, License number 49.021165
+    - date: 2013–
+      html: Direct Service Child Welfare Employee Licensure (CWEL). Illinois Department of Children and Family Services.
+      pillars:
+      - systems
+    - date: 2013–
+      html: Child Abuse and Neglect Safety Assessment (CANS). Illinois Department of Children and Family Services.
+      pillars:
+      - systems
+    - date: 2013–
+      html: Child Endangerment Risk Assessment Protocol (CERAP). Illinois Department of Children and Family Services.
+      pillars:
+      - systems
+  - heading: Practice Specializations
+    entries:
+    - date: '2013'
+      html: Child Protection, Child Welfare, and Foster Care Services. Department of Children and Family Service. State of Illinois.
+      pillars:
+      - systems
+    - date: '2012'
+      html: Advanced Child Welfare Practice. Jane Addams Child Welfare Traineeship (P.I. Alan J. Dettlaff). University of Illinois at Chicago Jane Addams College of Social Work.
+      pillars:
+      - systems
+  - heading: Practice-related Talks, Trainings, and Webinars
+    entries:
+    - date: '2020'
+      html: 'Engaging and serving fathers during difficult times: Fatherhood under racial injustice, police violence, and COVID-19. Metropolitan Family Services, Chicago, IL. Invited speaker (September, 2020).'
+      pillars:
+      - systems
+      - fathers
+    - date: '2019'
+      html: 'Serving diverse fathers: Meeting the needs of fathers of color. Multicultural Council, Fort Wayne, IN. Invited speaker (November, 2019).'
+      pillars:
+      - fathers
+    - date: '2019'
+      html: 'Engaging fathers in child and family services: Supports for caseworkers and home-visitors. Children’s Home &amp; Aid, Chicago, IL. Invited workshop trainer (June, 2019).'
+      pillars:
+      - systems
+      - fathers
+    - date: '2018'
+      html: 'Social work with diverse fathers: Benefits of father involvement, engagement, and accessibility. Metropolitan Family Services, Chicago, IL. Invited workshop trainer (August, 2018).'
+      pillars:
+      - systems
+      - fathers
+    - date: '2018'
+      html: 'Engaging fathers in child welfare services: Strategies for caseworkers, home-visitors, and teachers. Metropolitan Family Services, Chicago, IL. Invited workshop trainer (April, 2018).'
+      pillars:
+      - systems
+      - fathers
+    - date: '2018'
+      html: 'Engaging fathers in child welfare services: Agency management and supervision. Metropolitan Family Services, Chicago, IL. Invited workshop trainer (April, 2018).'
+      pillars:
+      - systems
+      - fathers
+mentoring:
+  title: Mentoring
+  subsections:
+  - heading: Dissertation
+    entries:
+    - date: 2024-
+      html: Kelley R. Hollie, Arizona State University School of Social Work (Committee member)
+    - date: 2024-
+      html: Jessica Coleman, University of Minnesota School of Social Work (Outside Committee member)
+    - date: 2022-
+      html: Ann Carver, Arizona State University School of Social Work (Qualitative methodologist)
+  - heading: Mentor
+    entries:
+    - date: '2023'
+      html: SSWR Meet the Scientist Luncheon (Invited mentor). Society for Social Work and Research 27th Annual Conference, Phoenix, AZ.
+      links:
+      - https://sswr.confex.com/sswr/2023/webprogram/Session14126.html
+    - date: '2023'
+      html: 'SSWR Coffee with a Scholar (Invited mentor). Mentee: Kasandra Dodd, Doctoral student, University of Georgia School of Social Work. Society for Social Work and Research 27th Annual Conference, Phoenix, AZ.'
+  - heading: Mentee
+    entries:
+    - date: 2022–
+      html: 'AASWSW Mentoring Initiative (Matched mentee). Mentor: Dr. Melissa Johnson-Reid, Ralph and Muriel Pumphrey Professor of Social Work, Washington University in St. Louis Brown School. American Academy of Social Work and Social Welfare.'
+service:
+  title: Service
+  subsections:
+  - heading: To the Profession
+    group: true
+    entries: []
+  - heading: ''
+    entries: []
+  - heading: Boards and Executive Committees
+    entries:
+    - date: 2024–27
+      html: Early Career Director-at-Large<br>Society for Social Work and Research
+      links:
+      - https://sswr.org/sswr-board-of-directors/
+    - date: 2024–27
+      html: Executive Committee<br>International Research Network on Transitions to Adulthood from Care
+      links:
+      - https://globalintrac.com/who-are-we/
+  - heading: Organizations
+    entries:
+    - date: 2022–
+      html: Social Welfare History Doctoral Support Group (Co-chair with Dr. Mimi Abramovitz). Social Welfare History Group.
+    - date: 2021–
+      html: Doctoral Students Transforming Social Work Group (Founder). Slack Workspace.
+      links:
+      - https://mailchi.mp/ssw/the-latest-news-from-gcsw-84wy1byg07-8517853?e=e69dea3512
+    - date: 2021–22
+      html: SWCAREs (Advisory Board Member). Social Work Coalition for Anti-Racist Educators.
+      links:
+      - https://www.swcares.org/team
+    - date: 2019–
+      html: Social Welfare History Group (Secretary).
+    - date: 2018–22
+      html: Doctoral Student Qualitative Committee (Co-chair). University of Chicago Crown Family School of Social Work, Policy, and Practice.
+  - heading: Journal Positions
+    entries:
+    - date: 2024–
+      html: Associate Editor. Journal of the Society for Social Work and Research
+      links:
+      - https://www.journals.uchicago.edu/journals/jsswr/board
+  - heading: Journal Reviewer
+    entries:
+    - date: Ad hoc
+      html: Academic Pediatrics
+    - date: Ad hoc
+      html: Child and Adolescent Social Work Journal
+    - date: Ad hoc
+      html: Child &amp; Family Social Work
+    - date: Ad hoc
+      html: Children and Youth Services Review
+    - date: Ad hoc
+      html: Clinical Social Work Journal
+    - date: Ad hoc
+      html: Journal of Community Practice
+    - date: Ad hoc
+      html: Journal of Community Psychology
+    - date: Ad hoc
+      html: Journal of Marriage and Family
+    - date: Ad hoc
+      html: Journal of Progressive Human Services
+    - date: Ad hoc
+      html: Journal of Public Child Welfare
+    - date: Ad hoc
+      html: Journal of Social Work and Research
+    - date: Ad hoc
+      html: Journal of Social Work Practice
+    - date: Ad hoc
+      html: Social Service Review
+    - date: Ad hoc
+      html: Studies in Clinical Social Work
+  - heading: Conference Abstract Reviewer
+    entries:
+    - date: Ad hoc
+      html: Society For Social Work &amp; Research (2022–2024)
+    - date: Ad hoc
+      html: Association for Public Policy Analysis &amp; Management (2023–2024)
+  - heading: To the University
+    group: true
+    entries: []
+  - heading: Fellowships
+    entries:
+    - date: 2025–
+      html: Society For Social Work &amp; Research Fellowship
+  - heading: Arizona State University
+    entries:
+    - date: 2023–
+      html: Research Committee. School of Social Work.
+    - date: 2022–
+      html: Advanced Direct Practice Committee. School of Social Work.
+    - date: 2022–
+      html: Practice, Policy, Administration, and Community Practice Committee. School of Social Work.
+    - date: 2022–
+      html: Child Welfare Curriculum Committee. School of Social Work.
+    - date: 2022–24
+      html: Ad hoc Diversity Committee. School of Social Work.
+memberships:
+  title: Memberships
+  subsections:
+  - heading: Academic Memberships
+    entries:
+    - date: 2019–
+      html: Social Welfare History Group
+    - date: 2019–
+      html: Council on Social Work Education
+    - date: 2019–
+      html: American Psychological Association
+    - date: 2019–
+      html: National Child Welfare Evaluation Summit (Children’s Bureau)
+    - date: 2019–
+      html: International Research Network on Transitions to Adulthood from Care
+    - date: 2019–
+      html: Association for Research on Nonprofit Organizations &amp; Voluntary Action
+    - date: 2019–
+      html: Public Management Research Association
+    - date: 2017–
+      html: National Council on Family Relations
+    - date: 2015–
+      html: Society for Social Work and Research
+  - heading: Professional Memberships
+    entries:
+    - date: 2021–
+      html: National Association of Black Social Workers
+    - date: 2021–
+      html: Chicago Association of Black Social Workers
+    - date: 2019–
+      html: National Association of Social Workers
+    - date: 2017–
+      html: Chicago Father Involvement Group
+mailing-address:
+  title: Mailing Address
+  subsections:
+  - heading: ''
+    entries:
+    - date: ASU
+      html: Justin Harty<br>School of Social Work<br>Mail Code 3920<br>Arizona State University<br>411 N Central Avenue, Suite 800<br>Phoenix, AZ 85004-0689<br>Updated November 2026

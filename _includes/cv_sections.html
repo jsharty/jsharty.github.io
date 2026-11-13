@@ -1,0 +1,40 @@
+{%- comment -%}
+Renders a section of _data/cv.yml (hand-edited CV content). include.key = top-level key.
+include.level = heading level for subsection headings (default 2). include.skip_title: don't print section title.
+{%- endcomment -%}
+{%- assign sec = site.data.cv[include.key] -%}
+{%- assign h = include.level | default: 2 -%}
+{%- if include.show_title -%}<h2 id="{{ sec.title | slugify }}">{{ sec.title }}</h2>{%- assign h = 3 -%}{%- endif -%}
+{%- for sub in sec.subsections -%}
+  {%- if sub.group -%}
+    {%- assign gh = h | minus: 1 -%}
+    <h{{ gh }} class="group" id="{{ sub.heading | slugify }}">{{ sub.heading }}</h{{ gh }}>
+    {%- continue -%}
+  {%- endif -%}
+  {%- if sub.from_bib -%}
+    {%- assign list = site.data.bib | where: "page", sub.from_bib | where: "section", sub.heading -%}
+    <section class="cv-section" id="{{ sub.heading | slugify }}">
+      <h{{ h }}>{{ sub.heading }}</h{{ h }}>
+      <ol class="items">{%- for it in list -%}{%- include bib_item.html item=it kind="lecture" -%}{%- endfor -%}</ol>
+    </section>
+    {%- continue -%}
+  {%- endif -%}
+  <section class="cv-section">
+  {%- if sub.heading != '' -%}<h{{ h }}{% if sub.heading != '' %} id="{{ sub.heading | slugify }}"{% endif %}>{{ sub.heading }}</h{{ h }}>{%- endif -%}
+  <ol class="items">
+  {%- for e in sub.entries -%}
+    {%- capture search -%}{{ e.date }} {{ e.title }} {{ e.html | strip_html }} {{ e.list | join: ' ' }}{%- endcapture -%}
+    <li class="item" data-pillars="{{ e.pillars | join: ' ' }}" data-search="{{ search | downcase | escape }}">
+      <div class="item-date">{{ e.date }}{% if e.when %}<span>{{ e.when }}</span>{% endif %}</div>
+      <div class="item-body">
+        {%- if e.title -%}<p class="item-title">{{ e.title }}</p>{%- endif -%}
+        <p>{{ e.html }}</p>
+        {%- if e.list -%}<ul class="sublist">{% for x in e.list %}<li>{{ x }}</li>{% endfor %}</ul>{%- endif -%}
+        {%- if e.pillars.size > 0 -%}<p class="tags">{% for p in e.pillars %}<a class="tag tag-{{ p }}" href="?pillar={{ p }}">{{ site.data.pillars.labels[p] }}</a>{% endfor %}</p>{%- endif -%}
+        {%- if e.links -%}<div class="btns">{% for l in e.links %}<a class="btn" href="{{ l }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> {% if l contains 'catalog.apps.asu.edu' %}Course catalog{% elsif e.links.size > 1 %}Link {{ forloop.index }}{% else %}Link{% endif %}</a>{% endfor %}</div>{%- endif -%}
+      </div>
+    </li>
+  {%- endfor -%}
+  </ol>
+  </section>
+{%- endfor -%}

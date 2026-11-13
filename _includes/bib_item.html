@@ -1,0 +1,42 @@
+{%- assign it = include.item -%}
+{%- assign kind = include.kind -%}
+{%- capture search -%}{{ it.text }} {{ it.year }} {{ it.section }} {% for p in it.pillars %}{{ site.data.pillars.labels[p] }} {% endfor %}{%- endcapture -%}
+<li class="item{% if it.files.cover and kind == 'pub' %} has-cover{% endif %}" id="{{ it.key }}" data-pillars="{{ it.pillars | join: ' ' }}" data-search="{{ search | downcase | escape }}">
+  <div class="item-date">{{ it.year }}{% if kind == 'talk' and it.month != '' %}<span>{{ it.month }} {{ it.day }}</span>{% endif %}</div>
+  <div class="item-body">
+    {%- if kind == 'pub' and it.files.cover -%}
+    <img class="cover" src="{{ it.files.cover | relative_url }}" alt="Cover of the publication venue" loading="lazy" width="600" height="800">
+    {%- endif -%}
+    <p class="cite">{{ it.citation }}</p>
+    {%- if it.pillars.size > 0 -%}
+    <p class="tags">{% for p in it.pillars %}<a class="tag tag-{{ p }}" href="?pillar={{ p }}">{{ site.data.pillars.labels[p] }}</a>{% endfor %}</p>
+    {%- endif -%}
+    <div class="btns">
+      {%- if it.url != '' -%}
+      {%- case kind -%}
+        {%- when 'talk' -%}{%- assign label = 'Program' -%}{%- assign icon = 'fa-calendar' -%}
+        {%- when 'lecture' -%}{%- assign label = 'Course' -%}{%- assign icon = 'fa-chalkboard' -%}
+        {%- else -%}
+          {%- if it.type == 'article' -%}{%- assign label = 'Journal' -%}{%- assign icon = 'fa-book-open' -%}
+          {%- elsif it.type == 'incollection' or it.type == 'inbook' -%}{%- assign label = 'Publisher' -%}{%- assign icon = 'fa-book' -%}
+          {%- elsif it.section == 'Podcasts' -%}{%- assign label = 'Listen' -%}{%- assign icon = 'fa-headphones' -%}
+          {%- else -%}{%- assign label = 'View' -%}{%- assign icon = 'fa-arrow-up-right-from-square' -%}{%- endif -%}
+      {%- endcase -%}
+      <a class="btn" href="{{ it.url }}"><i class="fa-solid {{ icon }}" aria-hidden="true"></i> {{ label }}</a>
+      {%- endif -%}
+      {%- if it.files.paper -%}<a class="btn" href="{{ it.files.paper | relative_url }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF</a>{%- endif -%}
+      {%- if it.files.slides -%}<a class="btn" href="{{ it.files.slides | relative_url }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> Slides</a>{%- endif -%}
+      {%- if it.files.poster -%}<a class="btn" href="{{ it.files.poster | relative_url }}"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{%- endif -%}
+      {%- if it.files.handout -%}<a class="btn" href="{{ it.files.handout | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Handout</a>{%- endif -%}
+      {%- if it.files.recording -%}<a class="btn" href="{{ it.files.recording | relative_url }}"><i class="fa-solid fa-video" aria-hidden="true"></i> Recording</a>{%- endif -%}
+      {%- if it.abstract != '' -%}<button type="button" class="btn" data-toggle="abs-{{ it.key }}" aria-expanded="false" aria-controls="abs-{{ it.key }}"><i class="fa-solid fa-align-left" aria-hidden="true"></i> Abstract</button>{%- endif -%}
+      {%- if kind == 'pub' -%}
+      <button type="button" class="btn" data-toggle="bib-{{ it.key }}" aria-expanded="false" aria-controls="bib-{{ it.key }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</button>
+      <a class="btn" href="{{ it.scholar }}"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>
+      {%- if it.doi != '' -%}<span class="__dimensions_badge_embed__ dim" data-doi="{{ it.doi }}" data-style="small_rectangle" data-hide-zero-citations="false" data-legend="hover-right"></span>{%- endif -%}
+      {%- endif -%}
+    </div>
+    {%- if it.abstract != '' -%}<div class="panel" id="abs-{{ it.key }}" hidden><p>{{ it.abstract | escape }}</p></div>{%- endif -%}
+    {%- if kind == 'pub' -%}<div class="panel" id="bib-{{ it.key }}" hidden><pre>{{ it.bibtex | escape }}</pre><button type="button" class="btn copy" data-copy="bib-{{ it.key }}">Copy BibTeX</button></div>{%- endif -%}
+  </div>
+</li>
