@@ -38,6 +38,7 @@ $dark-bg:     #191919;  // Gray 1
 $dark-bg-alt: #262626;  // one step up from Gray 1, for panels and the footer
 $dark-rule:   #333333;
 @mixin theme-light {
+  --hl-bg: #{$asu-gray-1}; --hl-fg: #{$asu-white};
   color-scheme: light;
   --bg: #{$asu-white}; --bg-alt: #{$asu-gray-7}; --footer-bg: #{$asu-gray-6};
   --rule: #{$asu-gray-6}; --line: #{$asu-gray-5}; --muted: #{$asu-gray};
@@ -47,6 +48,7 @@ $dark-rule:   #333333;
   --logo-light: block; --logo-dark: none;
 }
 @mixin theme-dark {
+  --hl-bg: #{$asu-gray-7}; --hl-fg: #{$asu-gray-1};
   color-scheme: dark;
   --bg: #{$dark-bg}; --bg-alt: #{$dark-bg-alt}; --footer-bg: #{$dark-bg-alt};
   --rule: #{$dark-rule}; --line: #{$asu-gray-2}; --muted: #{$asu-gray-4};
@@ -127,14 +129,16 @@ a:hover, a:focus { color: var(--link); text-decoration-thickness: 2px; }
 .nav-toggle { display: none; }
 
 // ---------------------------------------------------------------- headings (sentence case; gold highlight bar)
-h1, h2, h3 { color: var(--text); line-height: 1.25; font-weight: 700; }
-h1 { font-size: 2.25rem; margin: 0 0 24px; padding-bottom: 14px; position: relative; }
-h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 64px; height: 6px; background: $asu-gold; }
-h2 { font-size: 1.5rem; margin: 40px 0 14px; padding-bottom: 10px; position: relative; }
-h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 4px; background: $asu-gold; }
-h2.group { font-size: 1.65rem; color: var(--accent); margin-top: 48px; }
-h3 { font-size: 1.2rem; margin: 28px 0 8px; }
-h2 .n { color: var(--muted); font-weight: 400; font-size: 1rem; }
+// ASU highlight headings: page titles get the gold highlight with Gray 1 text (11.18:1);
+// sections and subsections get the black (Gray 1) highlight with white text (17.58:1).
+// In Dark theme the subheading highlight flips to Gray 7 with Gray 1 text so it stays visible (16.84:1).
+// No underline bars under headings.
+h1, h2, h3 { line-height: 1.25; font-weight: 700; width: fit-content; max-width: 100%; padding: 2px 10px; border-radius: 0; }
+h1 { font-size: 2.25rem; margin: 0 0 24px; background: $asu-gold; color: $asu-gray-1; }
+h2 { font-size: 1.5rem; margin: 40px 0 16px; background: var(--hl-bg); color: var(--hl-fg); }
+h2.group { font-size: 1.65rem; margin-top: 48px; }
+h3 { font-size: 1.2rem; margin: 28px 0 10px; background: var(--hl-bg); color: var(--hl-fg); }
+h2 .n { color: inherit; font-weight: 400; font-size: 1rem; }
 
 // ---------------------------------------------------------------- buttons
 // Rectangular, 4px radius, Arial Bold, sentence case. Same hue on hover/focus; slight scale + Gray 1 outline.
@@ -217,7 +221,7 @@ h2 .n { color: var(--muted); font-weight: 400; font-size: 1rem; }
 .feature-cover { width: 84px; border: 1px solid var(--line); align-self: start; }
 .feature-body { min-width: 0; display: flex; flex-direction: column; }
 .feature-body p { margin: 0; }
-h3.feature-title { margin: 0 0 6px; font-size: 1.05rem; line-height: 1.3; }
+h3.feature-title { margin: 0 0 6px; padding: 0; width: auto; background: none; color: var(--text); font-size: 1.05rem; line-height: 1.3; }
 .feature-meta { font-size: 0.9rem; color: var(--text-2); }
 .feature .btns { margin-top: auto; padding-top: 10px; }
 .recent { max-width: 760px; }

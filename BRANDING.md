@@ -16,7 +16,11 @@ restyled to Arizona State University brand and web standards. All colors are SCS
 | Secondary (buttons and tags only) | Green, Blue, Orange, Turquoise, Pink | `#78BE20`, `#00A3E0`, `#FF7F32`, `#4AB7C4`, `#E74973` |
 | Secondary, not used for fills | Copper | `#AF674B` (fails AA with Gray 1 and with white) |
 
-Maroon and gold lead: gold top bar, gold heading bars, gold current-page underline, maroon links and dates,
+Headings use ASU highlights, with no underline bars: page titles (h1) have the gold highlight with Gray 1
+text (11.18:1); section and subsection headings (h2, h3) have the black (Gray 1) highlight with white text
+(17.58:1), which becomes Gray 7 with Gray 1 text in Dark theme (16.84:1).
+
+Maroon and gold lead: gold top bar, gold current-page underline, maroon links and dates,
 maroon group headings, gold "Download CV" button (the single primary call to action).
 
 ## Buttons (one ASU secondary color per link type)
