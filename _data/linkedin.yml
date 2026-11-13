@@ -1,3 +1,4 @@
+# Only posts Justin wrote (no reposts).
 # Right-hand "Recent LinkedIn posts" sidebar on the home page.
 # LinkedIn has no public feed for personal profiles, so posts are listed here by hand, newest first.
 # To add one: on LinkedIn, open the post's "..." menu > "Copy link to post", then add an entry:
@@ -6,5 +7,23 @@
 #     text: "First few sentences of the post."
 #     image: /assets/linkedin/2026-11-10.jpg   # optional
 profile: https://www.linkedin.com/in/justinharty
-show: 5
-posts: []
+show: 6
+posts:
+  - date: 2026-11-10
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7525962600300449792/
+    text: "The 2029 CSWE EPAS draft removes anti-racism from social work's accreditation standards, and no law required it to. Grateful to publish this invited commentary with Bethany Jo Murray and Bianca Schindeler in the new issue of Abolitionist Perspectives in Social Work: \"An Unaccountable Education: The 2029 CSWE EPAS and the Politics of Anticipatory Compliance.\""
+  - date: 2026-10-29
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7521660528146952192/
+    text: "To social work students: in 2020, when I was trying to make sense of the events surrounding our last reckoning, I created a guide on Black contributions to mutual aid, social welfare, and social work history. In that same spirit, I offer you this bibliography: Critical Histories of Social Work: An Annotated Bibliography (Version 1) gathers 205 books, articles, and chapters that critique our profession and its organizations."
+  - date: 2026-10-19
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7517966404369891328/
+    text: "\"We have too often a deliberate attempt to change the facts of history that the story will make pleasant reading for Americans.\" (W.E.B. Du Bois, 1935). Last week I posted about CSWE's 2029 EPAS draft stripping out anti-racism and oppression. There is a quieter loss in that draft: our own history."
+  - date: 2026-10-15
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7516515912750137344/
+    text: "Is the 2029 EPAS our new loyalty oath? The first draft strips out the 2022 anti-racism, diversity, equity, and inclusion framework. Words are how a profession tells the truth about itself. Erase them and you erase what we are accountable for."
+  - date: 2026-04-29
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7455318727862038528/
+    text: "Sincere thanks to Rep. Danny K. Davis for the shoutout to me and the others doing great work to support young parents in foster care! I am honored that our work with expectant and parenting foster youth is helping inform real policy change, and grateful to have consulted with Rep. Davis on H.R. 7655, the \"Support for Expectant and Parenting Foster Youth Act.\""
+  - date: 2026-02-19
+    url: https://www.linkedin.com/feed/update/urn:li:activity:7430336718786035713/
+    text: "I'm honored to be featured on Episode 50 of the Harper Talks Alumni Podcast! Harper College was truly foundational for me. I arrived needing remedial courses and relying on payment plans just to stay enrolled. Looking back, those classes built the academic foundation I use every day."
