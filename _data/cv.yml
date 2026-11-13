@@ -52,14 +52,14 @@ positions:
       links:
       - https://ccwip.berkeley.edu/bio.html
 professional-license:
-  title: Professional License
+  title: Professional license
   subsections:
   - heading: ''
     entries:
     - date: 2019–
       html: 'Licensed Clinical Social Worker, #49.021165, Illinois'
 scholarship-teaching-and-practice-expertise:
-  title: Scholarship, Teaching, and Practice Expertise
+  title: Scholarship, teaching, and practice expertise
   subsections:
   - heading: ''
     entries:
@@ -151,7 +151,7 @@ teaching:
       - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWU&catalogNbr=394
       pillars:
       - systems
-  - heading: Lead Instructor
+  - heading: Lead instructor
     entries:
     - date: MSW-level
       html: -Arizona State University School of Social Work
@@ -167,7 +167,7 @@ teaching:
       - https://catalog.apps.asu.edu/catalog/courses/courselist?subject=SWU&catalogNbr=182
       pillars:
       - systems
-  - heading: Guest Lecturer
+  - heading: Guest lecturer
     from_bib: teaching
     note: Entries come from the .bib (keyword cv-teach-guestlectures).
   - heading: Adjunct
@@ -196,7 +196,7 @@ teaching:
       html: 1. Critical Social Work in a Multicultural Society (S2021)
       links:
       - https://catalog.uic.edu/search/?P=SOCW%20411
-  - heading: Teaching Assistant
+  - heading: Teaching assistant
     entries:
     - date: MA-level
       html: University of Chicago Crown Family School of Social Work, Policy, and Practice
@@ -243,9 +243,9 @@ teaching:
       pillars:
       - systems
 grants-and-fellowships:
-  title: Grants and Fellowships
+  title: Grants and fellowships
   subsections:
-  - heading: Research Fellowships
+  - heading: Research fellowships
     entries:
     - date: 2019–21
       html: Council on Social Work Education Minority Fellowship Program ($75,000). Funded by the Substance Abuse and Mental Health Services Administration.
@@ -262,7 +262,7 @@ grants-and-fellowships:
       html: University of Chicago Urban Doctoral Fellow ($1,000 for dissertation research). Funded by the Mansueto Institute for Urban Innovation.
       links:
       - https://miurban.uchicago.edu/urbandocfellows/
-  - heading: Research Training Grants
+  - heading: Research training grants
     entries:
     - date: '2023'
       html: 'NIH R25 Building a Multidisciplinary Pipeline of Researchers in Child Abuse and Neglect: 2023 Training Institute for Early Career or Transitioning Scholars; Co-PIs Cathy Spatz Widom &amp; Melissa Jonson-Reid (Travel grant and accommodation). Funded by the National Institute of Health R25 Education Project and Eunice Kennedy Shriver National Institute of Child Health &amp; Human Development.'
@@ -291,7 +291,7 @@ grants-and-fellowships:
       html: Jane Addams Child Welfare Traineeship ($9,000 grant and Illinois DCFS Training). Funded by the National Child Welfare Workforce Institute.
       pillars:
       - systems
-  - heading: Research Grant Consultancy
+  - heading: Research grant consultancy
     entries:
     - date: '2021'
       html: 'Robert Wood Johnson Foundation Policies4Action (Grant ID 78818, Qualitative Consultant). Honoring Indigenous Families: An Evaluation of the Implementation and Outcomes of the Nebraska Indian Child Welfare Act, P.I. Claudette Grinnell-Davis.'
@@ -300,13 +300,13 @@ grants-and-fellowships:
 practice:
   title: Practice
   subsections:
-  - heading: Post-MSW Experience
+  - heading: Post-MSW experience
     entries:
     - date: 2013–15
       html: Foster Care Caseworker. Lawrence Hall Youth Services. Chicago, IL.
       pillars:
       - systems
-  - heading: Pre-MSW Internship Experience
+  - heading: Pre-MSW internship experience
     entries:
     - date: 2012–13
       html: Placement and Permanency MSW Intern. Illinois Department of Children and Family Services. Chicago, IL.
@@ -318,7 +318,7 @@ practice:
       - systems
     - date: '2009'
       html: Behavioral Health Division Administrative Intern. Milwaukee County Government. Wauwatosa, WI.
-  - heading: Professional Licensure
+  - heading: Professional licensure
     entries:
     - date: 2019–
       html: Licensed Clinical Social Worker (LCSW). Illinois Department of Financial and Professional Regulation, License number 49.021165
@@ -334,7 +334,7 @@ practice:
       html: Child Endangerment Risk Assessment Protocol (CERAP). Illinois Department of Children and Family Services.
       pillars:
       - systems
-  - heading: Practice Specializations
+  - heading: Practice specializations
     entries:
     - date: '2013'
       html: Child Protection, Child Welfare, and Foster Care Services. Department of Children and Family Service. State of Illinois.
@@ -344,7 +344,7 @@ practice:
       html: Advanced Child Welfare Practice. Jane Addams Child Welfare Traineeship (P.I. Alan J. Dettlaff). University of Illinois at Chicago Jane Addams College of Social Work.
       pillars:
       - systems
-  - heading: Practice-related Talks, Trainings, and Webinars
+  - heading: Practice-related talks, trainings, and webinars
     entries:
     - date: '2020'
       html: 'Engaging and serving fathers during difficult times: Fatherhood under racial injustice, police violence, and COVID-19. Metropolitan Family Services, Chicago, IL. Invited speaker (September, 2020).'
@@ -401,12 +401,10 @@ mentoring:
 service:
   title: Service
   subsections:
-  - heading: To the Profession
+  - heading: To the profession
     group: true
     entries: []
-  - heading: ''
-    entries: []
-  - heading: Boards and Executive Committees
+  - heading: Boards and executive committees
     entries:
     - date: 2024–27
       html: Early Career Director-at-Large<br>Society for Social Work and Research
@@ -432,13 +430,13 @@ service:
       html: Social Welfare History Group (Secretary).
     - date: 2018–22
       html: Doctoral Student Qualitative Committee (Co-chair). University of Chicago Crown Family School of Social Work, Policy, and Practice.
-  - heading: Journal Positions
+  - heading: Journal positions
     entries:
     - date: 2024–
       html: Associate Editor. Journal of the Society for Social Work and Research
       links:
       - https://www.journals.uchicago.edu/journals/jsswr/board
-  - heading: Journal Reviewer
+  - heading: Journal reviewer
     entries:
     - date: Ad hoc
       html: Academic Pediatrics
@@ -468,13 +466,13 @@ service:
       html: Social Service Review
     - date: Ad hoc
       html: Studies in Clinical Social Work
-  - heading: Conference Abstract Reviewer
+  - heading: Conference abstract reviewer
     entries:
     - date: Ad hoc
       html: Society For Social Work &amp; Research (2022–2024)
     - date: Ad hoc
       html: Association for Public Policy Analysis &amp; Management (2023–2024)
-  - heading: To the University
+  - heading: To the university
     group: true
     entries: []
   - heading: Fellowships
@@ -496,7 +494,7 @@ service:
 memberships:
   title: Memberships
   subsections:
-  - heading: Academic Memberships
+  - heading: Academic memberships
     entries:
     - date: 2019–
       html: Social Welfare History Group
@@ -516,7 +514,7 @@ memberships:
       html: National Council on Family Relations
     - date: 2015–
       html: Society for Social Work and Research
-  - heading: Professional Memberships
+  - heading: Professional memberships
     entries:
     - date: 2021–
       html: National Association of Black Social Workers
@@ -527,7 +525,7 @@ memberships:
     - date: 2017–
       html: Chicago Father Involvement Group
 mailing-address:
-  title: Mailing Address
+  title: Mailing address
   subsections:
   - heading: ''
     entries:

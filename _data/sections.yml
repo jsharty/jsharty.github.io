@@ -2,34 +2,34 @@
 # Page order and heading order here = order on the website (matches the CV).
 # Add a new section by adding a line with its cv-* keyword. `hide: true` keeps it off the site.
 publications:
-  - {keyword: cv-pub-journal, heading: "Journal Articles"}
-  - {keyword: cv-pub-journal-inpress, heading: "Journal Articles – In Press"}
-  - {keyword: cv-pub-journal-underreview, heading: "Journal Articles – Under Review", hide: true}
-  - {keyword: cv-pub-chapter, heading: "Book Chapters"}
-  - {keyword: cv-pub-chapter-inpress, heading: "Book Chapters – In Press"}
-  - {keyword: cv-pub-reportbrief, heading: "Reports and Briefs"}
-  - {keyword: cv-pub-bookreview, heading: "Book Reviews"}
+  - {keyword: cv-pub-journal, heading: "Journal articles"}
+  - {keyword: cv-pub-journal-inpress, heading: "Journal articles, in press"}
+  - {keyword: cv-pub-journal-underreview, heading: "Journal articles, under review", hide: true}
+  - {keyword: cv-pub-chapter, heading: "Book chapters"}
+  - {keyword: cv-pub-chapter-inpress, heading: "Book chapters, in press"}
+  - {keyword: cv-pub-reportbrief, heading: "Reports and briefs"}
+  - {keyword: cv-pub-bookreview, heading: "Book reviews"}
 public-scholarship:
   - {keyword: cv-ps-bibliographies, heading: "Bibliographies"}
   - {keyword: cv-ps-podcasts, heading: "Podcasts"}
   - {keyword: cv-ps-guides, heading: "Guides"}
 conferences:
   - {keyword: cv-conf-keynote, heading: "Keynote"}
-  - {keyword: cv-conf-invitedsymposium, heading: "Invited Symposium"}
-  - {keyword: cv-conf-preconference, heading: "Preconference Workshop"}
+  - {keyword: cv-conf-invitedsymposium, heading: "Invited symposium"}
+  - {keyword: cv-conf-preconference, heading: "Preconference workshop"}
   - {keyword: cv-conf-panel, heading: "Panel"}
   - {keyword: cv-conf-chair, heading: "Chair"}
   - {keyword: cv-conf-discussant, heading: "Discussant"}
   - {keyword: cv-conf-organizer, heading: "Organizer"}
   - {keyword: cv-conf-papers, heading: "Papers"}
   - {keyword: cv-conf-poster, heading: "Posters"}
-  - {keyword: cv-conf-roundtables, heading: "Roundtables & Workshops"}
+  - {keyword: cv-conf-roundtables, heading: "Roundtables and workshops"}
   - {keyword: cv-conf-sigs, heading: "Groups"}
   - {keyword: cv-conf-doctoral, heading: "Mentorship"}
   - {keyword: cv-conf-other, heading: "Other"}
 presentations:
-  - {keyword: cv-pres-invitedtalks, heading: "Invited Talks"}
-  - {keyword: cv-pres-invitedpanels, heading: "Invited Panels"}
+  - {keyword: cv-pres-invitedtalks, heading: "Invited talks"}
+  - {keyword: cv-pres-invitedpanels, heading: "Invited panels"}
   - {keyword: cv-pres-organized, heading: "Organized"}
 teaching:
-  - {keyword: cv-teach-guestlectures, heading: "Guest Lecturer"}
+  - {keyword: cv-teach-guestlectures, heading: "Guest lecturer"}

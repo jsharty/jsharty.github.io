@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Professional Presentations
+title: Professional presentations
 permalink: /presentations/
 ---
-# Professional Presentations
+# Professional presentations
 
 {% include filters.html what="presentations" %}
 {% include bib_sections.html page="presentations" kind="talk" %}

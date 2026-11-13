@@ -23,7 +23,7 @@
     if (c) {
       var pre = document.querySelector('#' + c.getAttribute('data-copy') + ' pre');
       try { navigator.clipboard.writeText(pre.textContent); c.textContent = 'Copied'; } catch (err) { c.textContent = 'Select and copy'; }
-      setTimeout(function () { c.textContent = 'Copy BibTeX'; }, 1800);
+      setTimeout(function () { c.textContent = 'Copy citation (BibTeX)'; }, 1800);
     }
   });
 

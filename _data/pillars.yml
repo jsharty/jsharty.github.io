@@ -4,9 +4,9 @@
 # or the citekey is listed in _data/pillar_overrides.yml.
 order: [systems, fathers, history]
 labels:
-  systems: "Child Welfare & Systems"
-  fathers: "Fathers & Fatherhood"
-  history: "Social Work History"
+  systems: "Child welfare and systems"
+  fathers: "Fathers and fatherhood"
+  history: "Social work history"
 blurbs:
   systems: "Child welfare and foster care: father engagement in public systems and outcomes of young people, including young fathers, aging out of care."
   fathers: "Racial and ethnic minority fatherhood, father involvement, and father engagement."

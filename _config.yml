@@ -3,7 +3,14 @@ title: Justin S. Harty
 position: Assistant Professor of Social Work
 appointment: Director, Center for Child Well-Being
 affiliation: Arizona State University
-affiliation_link: https://socialwork.asu.edu
+affiliations:
+  - {name: School of Social Work, link: "https://socialwork.asu.edu"}
+  - {name: Watts College of Public Service and Community Solutions, link: "https://publicservice.asu.edu"}
+  - {name: Arizona State University, link: "https://www.asu.edu"}
+unit_logo: /assets/img/asu-socialwork-horiz.png        # ASU_SocialWork_1_Horiz_RGB_MaroonGold (web copy)
+unit_logo_link: https://socialwork.asu.edu
+favicon: /assets/img/ASU_SunBurst_1_RGB_MaroonGold_150ppi.png
+favicon_dark: /assets/img/ASU_SunBurst_2_RGB_White_150ppi.png
 email: justinharty@asu.edu
 description: >-
   Justin S. Harty, PhD, LCSW, Assistant Professor in the School of Social Work at Arizona State
@@ -33,7 +40,7 @@ nav:
   - {title: Presentations, url: /presentations/}
   - {title: Research, url: /research/}
   - {title: Teaching, url: /teaching/}
-  - {title: Grants & Fellowships, url: /grants/}
+  - {title: Grants and Fellowships, url: /grants/}
   - {title: Practice, url: /practice/}
   - {title: Mentoring, url: /mentoring/}
   - {title: Service, url: /service/}
@@ -50,6 +57,7 @@ exclude:
   - README.md
   - HOW-TO-UPDATE.md
   - LICENSE
+  - BRANDING.md
   - scripts/
   - vendor/
   - .github/

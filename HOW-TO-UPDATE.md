@@ -50,7 +50,7 @@ Bio and the home page: `index.md`. Name, title, links, menu: `_config.yml`. CV d
 `assets/files/Harty-CV.pdf`. Photo: `assets/img/harty.jpg`.
 
 ## Brand
-Colors and fonts follow ASU web standards and live in `_sass/_asu.scss` (Arial; maroon #8C1D40; gold #FFC627).
+Colors, fonts, buttons, and logos follow the ASU spec; all variables are at the top of `_sass/minimal-light.scss`. See BRANDING.md for the color and button mapping and contrast ratios.
 
 ## Switching to justinharty.com (one-time)
 justinharty.com currently points to Wix, so the site is served at https://jsharty.github.io for now.

@@ -31,7 +31,7 @@ include.level = heading level for subsection headings (default 2). include.skip_
         <p>{{ e.html }}</p>
         {%- if e.list -%}<ul class="sublist">{% for x in e.list %}<li>{{ x }}</li>{% endfor %}</ul>{%- endif -%}
         {%- if e.pillars.size > 0 -%}<p class="tags">{% for p in e.pillars %}<a class="tag tag-{{ p }}" href="?pillar={{ p }}">{{ site.data.pillars.labels[p] }}</a>{% endfor %}</p>{%- endif -%}
-        {%- if e.links -%}<div class="btns">{% for l in e.links %}<a class="btn" href="{{ l }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> {% if l contains 'catalog.apps.asu.edu' %}Course catalog{% elsif e.links.size > 1 %}Link {{ forloop.index }}{% else %}Link{% endif %}</a>{% endfor %}</div>{%- endif -%}
+        {%- if e.links -%}<div class="btns">{% for l in e.links %}<a class="btn btn-project" href="{{ l }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> {% if l contains 'catalog.apps.asu.edu' %}Course catalog{% elsif l contains 'sswr.confex' or l contains 'cswe.org' %}Program{% elsif e.links.size > 1 %}Website {{ forloop.index }}{% else %}Website{% endif %}</a>{% endfor %}</div>{%- endif -%}
       </div>
     </li>
   {%- endfor -%}

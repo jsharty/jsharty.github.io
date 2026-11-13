@@ -8,22 +8,30 @@
   <meta name="description" content="{{ page.description | default: site.description | strip_newlines }}">
   <meta name="keywords" content="{{ site.keywords }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="icon" media="(prefers-color-scheme: light)" href="{{ site.favicon | relative_url }}" type="image/png">
+  <link rel="icon" media="(prefers-color-scheme: dark)" href="{{ site.favicon_dark | relative_url }}" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="goldbar" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="unit-logo" href="{{ site.unit_logo_link }}"><img src="{{ site.unit_logo | relative_url }}" alt="ASU School of Social Work" width="1040" height="400"></a>
+      <a class="topbar-asu" href="https://www.asu.edu">Arizona State University</a>
+    </div>
+  </header>
   <div class="wrapper">
-    <header class="sidebar">
+    <aside class="sidebar" aria-label="Profile and site menu">
       <a href="{{ '/' | relative_url }}" class="avatar-link" aria-label="Home">
         <img class="avatar" src="{{ site.avatar | relative_url }}" alt="Portrait of Justin S. Harty" width="600" height="883">
       </a>
       <p class="site-name"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
       <p class="position">{{ site.position }}</p>
       {% if site.appointment %}<p class="position">{{ site.appointment }}</p>{% endif %}
-      <p class="affil"><a href="{{ site.affiliation_link }}">{{ site.affiliation }}</a></p>
+      {% for a in site.affiliations %}<p class="affil{% if forloop.last %} affil-asu{% endif %}"><a href="{{ a.link }}">{{ a.name }}</a></p>{% endfor %}
       <p class="email"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
       <div class="social" aria-label="Profiles">
         {% if site.links.asu_profile %}<a href="{{ site.links.asu_profile }}" title="ASU profile" aria-label="ASU profile"><i class="fa-solid fa-building-columns"></i></a>{% endif %}
@@ -33,27 +41,29 @@
         {% if site.links.linkedin %}<a href="{{ site.links.linkedin }}" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>{% endif %}
         {% if site.links.x %}<a href="{{ site.links.x }}" title="X" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>{% endif %}
       </div>
-      <a class="btn btn-gold cv-btn" href="{{ site.cv_pdf | relative_url }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Download CV</a>
+      <a class="btn btn-gold cv-btn" href="{{ site.cv_pdf | relative_url }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Download CV (PDF)</a>
       <nav class="sitenav" aria-label="Site">
         <button class="nav-toggle" aria-expanded="false" aria-controls="navlist">Menu <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
         <ul id="navlist">
           {% for item in site.nav %}
           {% assign active = false %}{% if page.url == item.url %}{% assign active = true %}{% endif %}
-          <li><a href="{{ item.url | relative_url }}"{% if active %} aria-current="page" class="active"{% endif %}>{{ item.title }}</a></li>
+          <li><a href="{{ item.url | relative_url }}"{% if active %} aria-current="page" class="active"{% endif %}><span>{{ item.title }}</span></a></li>
           {% endfor %}
         </ul>
       </nav>
-    </header>
+    </aside>
 
     <main id="main" class="content">
       {{ content }}
-      <footer class="footer">
-        <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Updated {{ site.time | date: '%B %-d, %Y' }}.
-        Built on the <a href="https://github.com/yaoyao-liu/minimal-light">Minimal Light</a> theme by Yaoyao Liu.
-        This is a personal faculty site, not an official Arizona State University page.</p>
-      </footer>
     </main>
   </div>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p class="asu-line"><a href="https://www.asu.edu">Arizona State University</a></p>
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Updated {{ site.time | date: '%B %-d, %Y' }}. A personal faculty site, not an official ASU page.</p>
+      <p>Theme: <a href="https://github.com/yaoyao-liu/minimal-light">Minimal Light</a> by Yaoyao Liu.</p>
+    </div>
+  </footer>
   <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
   {% if page.dimensions %}<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>{% endif %}
 </body>

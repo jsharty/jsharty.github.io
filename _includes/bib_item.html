@@ -5,7 +5,7 @@
   <div class="item-date">{{ it.year }}{% if kind == 'talk' and it.month != '' %}<span>{{ it.month }} {{ it.day }}</span>{% endif %}</div>
   <div class="item-body">
     {%- if kind == 'pub' and it.files.cover -%}
-    <img class="cover" src="{{ it.files.cover | relative_url }}" alt="Cover of the publication venue" loading="lazy" width="600" height="800">
+    <img class="cover" src="{{ it.files.cover | relative_url }}" alt="Cover of the journal or book where this appeared" loading="lazy" width="600" height="800">
     {%- endif -%}
     <p class="cite">{{ it.citation }}</p>
     {%- if it.pillars.size > 0 -%}
@@ -22,21 +22,21 @@
           {%- elsif it.section == 'Podcasts' -%}{%- assign label = 'Listen' -%}{%- assign icon = 'fa-headphones' -%}
           {%- else -%}{%- assign label = 'View' -%}{%- assign icon = 'fa-arrow-up-right-from-square' -%}{%- endif -%}
       {%- endcase -%}
-      <a class="btn" href="{{ it.url }}"><i class="fa-solid {{ icon }}" aria-hidden="true"></i> {{ label }}</a>
+      <a class="btn btn-project" href="{{ it.url }}" aria-label="{{ label }}: {{ it.title | escape }}"><i class="fa-solid {{ icon }}" aria-hidden="true"></i> {{ label }}</a>
       {%- endif -%}
-      {%- if it.files.paper -%}<a class="btn" href="{{ it.files.paper | relative_url }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF</a>{%- endif -%}
-      {%- if it.files.slides -%}<a class="btn" href="{{ it.files.slides | relative_url }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> Slides</a>{%- endif -%}
-      {%- if it.files.poster -%}<a class="btn" href="{{ it.files.poster | relative_url }}"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{%- endif -%}
-      {%- if it.files.handout -%}<a class="btn" href="{{ it.files.handout | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Handout</a>{%- endif -%}
-      {%- if it.files.recording -%}<a class="btn" href="{{ it.files.recording | relative_url }}"><i class="fa-solid fa-video" aria-hidden="true"></i> Recording</a>{%- endif -%}
-      {%- if it.abstract != '' -%}<button type="button" class="btn" data-toggle="abs-{{ it.key }}" aria-expanded="false" aria-controls="abs-{{ it.key }}"><i class="fa-solid fa-align-left" aria-hidden="true"></i> Abstract</button>{%- endif -%}
+      {%- if it.files.paper -%}<a class="btn btn-pdf" href="{{ it.files.paper | relative_url }}" aria-label="PDF: {{ it.title | escape }}"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF</a>{%- endif -%}
+      {%- if it.files.slides -%}<a class="btn btn-video" href="{{ it.files.slides | relative_url }}"><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i> Slides</a>{%- endif -%}
+      {%- if it.files.poster -%}<a class="btn btn-other" href="{{ it.files.poster | relative_url }}"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{%- endif -%}
+      {%- if it.files.handout -%}<a class="btn btn-other" href="{{ it.files.handout | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Handout</a>{%- endif -%}
+      {%- if it.files.recording -%}<a class="btn btn-video" href="{{ it.files.recording | relative_url }}"><i class="fa-solid fa-video" aria-hidden="true"></i> Recording</a>{%- endif -%}
+      {%- if it.abstract != '' -%}<button type="button" class="btn btn-other" data-toggle="abs-{{ it.key }}" aria-expanded="false" aria-controls="abs-{{ it.key }}"><i class="fa-solid fa-align-left" aria-hidden="true"></i> Abstract</button>{%- endif -%}
       {%- if kind == 'pub' -%}
-      <button type="button" class="btn" data-toggle="bib-{{ it.key }}" aria-expanded="false" aria-controls="bib-{{ it.key }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</button>
-      <a class="btn" href="{{ it.scholar }}"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>
+      <button type="button" class="btn btn-bibtex" data-toggle="bib-{{ it.key }}" aria-expanded="false" aria-controls="bib-{{ it.key }}"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</button>
+      <a class="btn btn-other" href="{{ it.scholar }}" aria-label="Google Scholar: {{ it.title | escape }}"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>
       {%- if it.doi != '' -%}<span class="__dimensions_badge_embed__ dim" data-doi="{{ it.doi }}" data-style="small_rectangle" data-hide-zero-citations="false" data-legend="hover-right"></span>{%- endif -%}
       {%- endif -%}
     </div>
     {%- if it.abstract != '' -%}<div class="panel" id="abs-{{ it.key }}" hidden><p>{{ it.abstract | escape }}</p></div>{%- endif -%}
-    {%- if kind == 'pub' -%}<div class="panel" id="bib-{{ it.key }}" hidden><pre>{{ it.bibtex | escape }}</pre><button type="button" class="btn copy" data-copy="bib-{{ it.key }}">Copy BibTeX</button></div>{%- endif -%}
+    {%- if kind == 'pub' -%}<div class="panel" id="bib-{{ it.key }}" hidden><pre>{{ it.bibtex | escape }}</pre><button type="button" class="btn btn-bibtex copy" data-copy="bib-{{ it.key }}">Copy citation (BibTeX)</button></div>{%- endif -%}
   </div>
 </li>
