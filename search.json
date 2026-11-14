@@ -2,14 +2,14 @@
 layout: null
 permalink: /search.json
 ---
-{%- assign pages = "publications:Publications,public-scholarship:Public Scholarship,conferences:Conferences,presentations:Presentations,teaching:Teaching" | split: "," -%}
+{%- assign pages = "publications:Publications,public-scholarship:Public Scholarship,conferences:Conferences,presentations:Presentations" | split: "," -%}
 [
 {%- for it in site.data.bib -%}
   {%- assign url = '/' | append: it.page | append: '/#' | append: it.key -%}
   {%- assign pname = it.page | replace: '-', ' ' | capitalize -%}
   {"t":{{ it.citation | jsonify }},"y":{{ it.year | jsonify }},"s":{{ it.section | jsonify }},"p":{{ pname | jsonify }},"u":{{ url | relative_url | jsonify }},"g":{{ it.pillars | jsonify }},"d":{{ it.sortdate | jsonify }},"a":{{ it.authorsort | jsonify }},"v":{{ it.venue | downcase | jsonify }},"ti":{{ it.title | downcase | jsonify }},"r":{{ it.role }}},
 {%- endfor -%}
-{%- assign cvmap = "research:/research/,teaching:/teaching/,grants-and-fellowships:/grants/,practice:/practice/,service:/service/,memberships:/service/,positions:/,education:/" | split: "," -%}
+{%- assign cvmap = "research:/research/,grants-and-fellowships:/grants/,practice:/practice/,service:/service/,memberships:/service/,positions:/,education:/" | split: "," -%}
 {%- for pair in cvmap -%}
   {%- assign kv = pair | split: ":" -%}
   {%- assign k0 = kv[0] -%}{%- assign k1 = kv[1] -%}{%- assign sec = site.data.cv[k0] -%}

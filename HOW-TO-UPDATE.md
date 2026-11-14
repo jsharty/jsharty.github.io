@@ -43,7 +43,7 @@ To set tags yourself, either:
 - **Dimensions** citation badges appear automatically for items with a DOI.
 
 ## Everything else on the CV
-Education, positions, teaching, research projects, grants, practice, service, and memberships
+Education, positions, research projects, grants, practice, service, and memberships
 live in **`_data/cv.yml`**. Edit the text there; keep the indentation.
 
 Bio and the home page: `index.md`. Name, title, links, menu: `_config.yml`. CV download: replace

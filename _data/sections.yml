@@ -32,4 +32,4 @@ presentations:
   - {keyword: cv-pres-invitedpanels, heading: "Invited panels"}
   - {keyword: cv-pres-organized, heading: "Organized"}
 teaching:
-  - {keyword: cv-teach-guestlectures, heading: "Guest lecturer"}
+  - {keyword: cv-teach-guestlectures, heading: "Guest lecturer", hide: true}   # removed from the site at Justin's request
